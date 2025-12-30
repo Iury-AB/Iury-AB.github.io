@@ -1,0 +1,335 @@
+@font-face {
+  font-family: "NewsflashBB";
+  src: url(fonts/NewsflashBB.ttf);
+}
+
+@font-face {
+  font-family: "comic";
+  src: url(fonts/comic.ttf);
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color:#ddd;
+  margin: 0;
+  padding: 20px;
+}
+
+.sheet {
+  max-width: 1000px;
+  margin-left: auto;
+  margin-bottom: auto;
+  margin-right: auto;
+  margin-top: 70px;
+  background: #fff;
+  padding: 20px;
+  border: 1px solid #ccc;
+}
+
+h1 {
+  text-align: left;
+  margin-bottom: 2px;
+  margin-top: 2px;
+  font-family: NewsflashBB;
+  color:rgb(122, 179, 225);
+  font-weight: normal;
+}
+
+input {
+  font-family: comic;
+}
+
+.bloco {
+  display: grid;
+  border: 2px solid rgb(90, 123, 254);
+  border-radius: 15px;
+  margin: 5px;
+}
+
+.header-grid {
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  padding: 10px;
+}
+
+.habilities-skills-adv {
+  grid-template-columns: 25% 30% 43%;
+  border: none;
+  gap: 12px;
+  align-items: start;
+  justify-items: center;
+}
+
+.habilities {
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2px;
+  padding: 10px;
+  align-items: center;
+  justify-items: center;
+}
+
+.defenses {
+  grid-template-columns: 44% 15% 15% 16% 10%;
+  gap: 2px;
+  padding: 10px;
+  align-items: center;
+}
+
+.classe {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  padding: 10px;
+  font-size: 20px;
+}
+
+.skills {
+  gap: 2px;
+  align-items: center;
+  padding: 10px;
+  justify-items: center;
+}
+
+table {
+  border-spacing: 0px;
+}
+
+th{
+  font-weight: normal;
+}
+
+.normal-text {
+  font-family: NewsflashBB;
+  color: black;
+}
+
+.small-number input {
+  padding: 1px;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 13px;
+  font-family: NewsflashBB;
+  color: rgb(90, 123, 254);
+  text-align:center;
+  border:none;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+}
+
+.field label {
+  font-size: 15px;
+  font-family: NewsflashBB;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+}
+
+.field input {
+  padding: 1px;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+.stat {
+  display: block;
+}
+
+.stat input {
+  background-color: rgba(123,181,238,0.5);
+  border-radius: 5px;
+  border: none;
+  width: 100%;
+  padding: 1px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.hability label {
+  font-size: 20px;
+  font-family: NewsflashBB;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+}
+
+.hability input {
+  font-size: 25px;
+  max-width: 70px;
+}
+
+.sub-hab label {
+  font-size: 15px;
+  font-family: NewsflashBB;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+}
+
+.sub-hab input {
+  padding: 1px;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 15px;
+  text-align:center;
+  max-width: 70px;
+  border: 2px solid rgb(123,181,238);
+}
+
+.outros {
+  justify-self: center;
+}
+
+.outros input {
+  font-size: 15px;
+  max-width: 30px;
+}
+
+.outros label {
+  font-family: NewsflashBB;
+  font-size: 12px;
+}
+
+/* Fields that should span more columns */
+.span-2 {
+  grid-column: span 2;
+}
+
+.span-3 {
+  grid-column: span 3;
+}
+
+.span-4 {
+  grid-column: span 4;
+}
+
+.span-5 {
+  grid-column: span 5;
+}
+
+.span-6 {
+  grid-column: span 6;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+#top-nav-bar {
+  height: 0;
+  display: block;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #000;
+}
+
+#top-nav-bar > #pagetop {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0;
+  height: 56px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  right: 0;
+  max-width: 1750px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#top-nav-bar::before {
+  display: block;
+  content: " ";
+  z-index: -1;
+  position: fixed;
+  width: 100%;
+  height: 56px;
+  left: 0;
+  top: 0;
+  background-color: black;
+}
+
+.botao {
+  margin: 10px;
+  padding: 8px 16px;
+  background-color: white;
+  color: black;
+  border-radius: 5px;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+.botao-img {
+  background: #fff;
+  border: 2px solid #fff;
+  padding: 0;
+  cursor: pointer;
+  border: 2px solid #fff;
+  width: 35px;
+  height: 35px;
+  border-radius: 5px;
+}
+
+.botao-img img {
+  width: 30;
+  height: 30px;
+  background-color: #fff;
+}
+
+.classe label{
+  font-family: NewsflashBB;
+  font-size: 15px;
+  position: relative;
+  z-index: 1;
+}
+
+.classe select {
+  font-size: 20px;
+  background-color: rgba(123,181,238,0.5);
+  border: none;
+  border-radius: 5px;
+}
+
+.classe input {
+  position: absolute;
+  z-index: 2;
+  font-size: 35px;
+}
+
+.classe span {
+  font-size: 30px;
+  color: rgb(90, 123, 254);
+  z-index: 1;
+}
+
+select {
+  font-family: NewsflashBB;
+}
+
+span {
+  font-family: NewsflashBB;
+  font-weight: normal;
+}
+
+#corrupcao-progresso {
+  height: 10px; 
+  background-color: blue; 
+  border: none;
+  width: 0%;
+  margin-top: 20px;
+}
+
+.vida-estamina input{
+  background-color: rgba(255,255,255,0.5);
+  text-align: center;
+  max-width: none;
+}
