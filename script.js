@@ -272,7 +272,10 @@ function recalcularTudo() {
   const corrupcao = document.getElementById("corrupcao");
   const max = document.getElementById("corrupcao-maximo");
 
-  atualizarBarra(corrupcao, max)
+  atualizarBarra(corrupcao, max);
+  calcularBonusClasse();
+  calcularVida();
+  calcularEstamina();
 
 }
 
@@ -409,9 +412,12 @@ function calcularVida () {
       vida = "1680";
   }
   else {
-      vida = "---";
+      vida = "0";
   }
-  document.getElementById("vida").value = vida;
+
+  const vida_extra = Number(document.getElementById("vida-outros").value) || 0;
+  const vida_classe = Number(document.getElementById("vida-classe").value) || 0;
+  document.getElementById("vida").value = Number(vida) + vida_extra + vida_classe;
 }
 
 function calcularEstamina() {
@@ -420,5 +426,121 @@ function calcularEstamina() {
 
   var estamina = Math.floor(vida_num/2);
 
-  document.getElementById("estamina").value = estamina;
+  const estamina_extra = Number(document.getElementById("estamina-outros").value) || 0;
+  const estamina_classe = Number(document.getElementById("estamina-classe").value) || 0;
+
+  document.getElementById("estamina").value = estamina + estamina_classe + estamina_extra;
+}
+
+function calcularBonusClasse() {
+  const classe = document.getElementById("classe").value;
+  const corrupcao = Number(document.getElementById("corrupcao").value);
+  var vidaBonus = 0;
+  var estaminaBonus = 0;
+  
+  if (classe == "Atirador") {
+    if(corrupcao >= 15) {
+      vidaBonus = vidaBonus + 3;
+      estaminaBonus = estaminaBonus + 4;
+    }
+    if (corrupcao >= 25) {
+      vidaBonus = vidaBonus + 3;
+      estaminaBonus = estaminaBonus + 4;
+    }
+    if(corrupcao >= 35) {
+      vidaBonus = vidaBonus + 3;
+      estaminaBonus = estaminaBonus + 4;
+    }
+    if (corrupcao >= 45) {
+      vidaBonus = vidaBonus + 3;
+      estaminaBonus = estaminaBonus + 4;
+    }
+    if (corrupcao >= 55) {
+      vidaBonus = vidaBonus + 3;
+      estaminaBonus = estaminaBonus + 4;
+    }
+    if (corrupcao >= 65) {
+      vidaBonus = vidaBonus + 3;
+      estaminaBonus = estaminaBonus + 4;
+    }
+  }else if (classe == "Belico"){
+    if(corrupcao >= 15) {
+      vidaBonus = vidaBonus + 5;
+      estaminaBonus = estaminaBonus + 3;
+    }
+    if (corrupcao >= 25) {
+      vidaBonus = vidaBonus + 5;
+      estaminaBonus = estaminaBonus + 3;
+    }
+    if(corrupcao >= 35) {
+      vidaBonus = vidaBonus + 5;
+      estaminaBonus = estaminaBonus + 3;
+    }
+    if (corrupcao >= 45) {
+        vidaBonus = vidaBonus + 5;
+        estaminaBonus = estaminaBonus + 3;
+    }
+      if (corrupcao >= 55) {
+        vidaBonus = vidaBonus + 5;
+        estaminaBonus = estaminaBonus + 3;
+    }
+    if (corrupcao >= 65) {
+      vidaBonus = vidaBonus + 5;
+      estaminaBonus = estaminaBonus + 3;
+    }
+  }else if (classe == "Guardiao"){
+    if(corrupcao >= 15) {
+      vidaBonus = vidaBonus + 7;
+      estaminaBonus = estaminaBonus + 2;
+    }
+    if (corrupcao >= 25) {
+      vidaBonus = vidaBonus + 7;
+      estaminaBonus = estaminaBonus + 2;
+    }
+    if(corrupcao >= 35) {
+      vidaBonus = vidaBonus + 7;
+      estaminaBonus = estaminaBonus + 2;
+    }
+    if (corrupcao >= 45) {
+      vidaBonus = vidaBonus + 7;
+      estaminaBonus = estaminaBonus + 2;
+    }
+    if (corrupcao >= 55) {
+      vidaBonus = vidaBonus + 7;
+      estaminaBonus = estaminaBonus + 2;
+    }
+    if (corrupcao >= 65) {
+      vidaBonus = vidaBonus + 7;
+      estaminaBonus = estaminaBonus + 2;
+    }
+  }else if (classe == "Ajudante"){
+    if(corrupcao >= 15) {
+      vidaBonus = vidaBonus + 2;
+      estaminaBonus = estaminaBonus + 3;
+    }
+    if (corrupcao >= 25) {
+      vidaBonus = vidaBonus + 2;
+      estaminaBonus = estaminaBonus + 3;
+    }
+    if(corrupcao >= 35) {
+      vidaBonus = vidaBonus + 2;
+      estaminaBonus = estaminaBonus + 3;
+    }
+    if (corrupcao >= 45) {
+      vidaBonus = vidaBonus + 2;
+      estaminaBonus = estaminaBonus + 3;
+    }
+    if (corrupcao >= 55) {
+      vidaBonus = vidaBonus + 2;
+      estaminaBonus = estaminaBonus + 3;
+    }
+    if (corrupcao >= 65) {
+      vidaBonus = vidaBonus + 2;
+      estaminaBonus = estaminaBonus + 3;
+    }
+  }
+
+  document.getElementById("vida-classe").value = vidaBonus;
+  document.getElementById("estamina-classe").value = estaminaBonus;
+
 }

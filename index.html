@@ -16,7 +16,7 @@
       </button>
 
       <select id="listaFichas" onchange="carregarFicha(this.value)" class="botao">
-        <option value="">— selecionar personagem —</option>
+        <option value="selecionar">— selecionar personagem —</option>
       </select>
 
       <button onclick="deletarFicha()" class="botao-img">
@@ -239,7 +239,7 @@
 
         <div class="hability stat">
           <label for="vigor">Vigor</label><br>
-          <input class="dependente" type="number" id="vigor" oninput="calcularVida();calcularEstamina()">
+          <input class="dependente" type="number" id="vigor" oninput="calcularVida();calcularEstamina();">
         </div>
 
         <div class="hability stat">
@@ -358,17 +358,17 @@
         <div class="bloco classe">
           <div style="margin: 5px;" class="span-6">
             <label for="classe">Classe:</label>
-            <select name="classes-option" id="classe">
+            <select name="classes-option" id="classe" onchange="recalcularTudo()">
               <option value="selecione"> — Escolha uma classe — </option>
-              <option value="ajudante">Ajudante</option>
-              <option value="atirador">Atirador</option>
-              <option value="belico">Belico</option>
-              <option value="guardiao">Guardiao</option>
+              <option value="Ajudante">Ajudante</option>
+              <option value="Atirador">Atirador</option>
+              <option value="Belico">Belico</option>
+              <option value="Guardiao">Guardiao</option>
             </select>
           </div>
 
           <div class="field stat span-4">
-            <input type="number" id="corrupcao" style="width: 130px;" title="Corrupção">
+            <input type="number" id="corrupcao" style="width: 130px;" title="Corrupção" class="dependente">
             <div style="margin-top: 10px; margin-left: 15px;">
               <span style="margin-right: 15px;">Corrupcao</span>
               <span>%</span>
@@ -395,20 +395,42 @@
               atualizarBarra();
             </script>
           </div>
-          <div class="field sub-hab span-3 vida-estamina" style="gap: 15px;">
+          <div class="field sub-hab span-2 vida-estamina" style="gap: 15px;margin: 5px;">
             <div>
-              <input type="number" id="vida" style="width: 150px; width: 100px;" title="Vida" readonly>
+              <input type="number" id="vida" style="width: 100px;" title="Vida" readonly>
               <div style="margin-top: 15px; margin-left: 30px;">
                 <span style="margin-right: 8px;">Vida</span>
               </div>
             </div>
             
             <div>
-              <input type="number" id="estamina" style="width: 150px; width: 100px;" title="Estamina" readonly>
+              <input type="number" id="estamina" style="width: 100px;" title="Estamina" readonly>
               <div style="margin-top: 15px; margin-left: 10px;">
                 <span style="margin-right: 8px;">Estamina</span>
               </div>
             </div>
+          </div>
+
+          <div class="field stat span-2" style="margin-left: 20px;padding: 5px;gap: 10px;position: relative;">
+            <div>
+              <input type="number" id="vida-outros" style="width: 50px;font-size: 20px;margin: auto;" class="dependente">
+              <div style="margin-left: 20px;margin-top: 10px;">
+                <span style="margin-right: 8px;">+</span>
+              </div>
+            </div>
+            <div>
+              <input type="number" id="estamina-outros" style="width: 50px;font-size: 20px;margin: auto;" class="dependente">
+              <div style="margin-top: 30px; margin-left: 20px;">
+                  <span style="margin-right: 8px;">+</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="sub-hab span-2" style="gap: 5px;">
+            <label for="vida-classe">Bonus da Classe:</label>
+            <input type="number" id="vida-classe" style="position: relative;font-size: 20px;" readonly>
+            <label for="estamina-classe">Bonus da Classe:</label>
+            <input type="number" id="estamina-classe" style="position: relative;font-size: 20px;" readonly>
           </div>
         </div>
       </div>
