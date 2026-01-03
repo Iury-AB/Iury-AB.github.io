@@ -506,16 +506,41 @@
             
             function removerVantagens() {
               document.querySelectorAll(".nome-vantagem").forEach(vantagem => {
-                if(vantagem.value.trim() === "" ) {
+                if (vantagem.value.trim() === "") {
                   const linha = vantagem.closest(".vantagens-linha");
                   if (linha) {
                     linha.remove();
+                    contadorVantagens--;
                   }
+                }
+              });
+
+              const linhas = document.querySelectorAll(".vantagens-linha");
+
+              linhas.forEach((linha, index) => {
+                const numero = index;
+
+                const lvl = linha.querySelector('input[id$="-lvl"]');
+                const tipo = linha.querySelector('select[id$="-tipo"]');
+                const nome = linha.querySelector('input[id$="-nome"]');
+
+                if (lvl) {
+                  lvl.id = `vantagem${numero}-lvl`;
+                }
+
+                if (tipo) {
+                  tipo.id = `vantagem${numero}-tipo`;
+                }
+
+                if (nome) {
+                  nome.id = `vantagem${numero}-nome`;
+                  nome.title = `Vantagem ${numero}`;
                 }
               });
 
               recalcularTudo();
             }
+
           </script>
         
       </div>
