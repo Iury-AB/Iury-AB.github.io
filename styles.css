@@ -358,6 +358,23 @@ input[type="number"]::-webkit-outer-spin-button {
   text-align: center;
 }
 
+#vantagensPorTipo label {
+  font-family: NewsflashBB;
+  font-size: 15px;
+  color: rgb(90, 123, 254);
+  padding: 5px;
+  margin: auto;
+}
+
+#vantagensPorTipo input {
+  border: none;
+  font-size: 15px;
+  width: 5%;
+  text-align: center;
+  max-height: 20px;
+  font-family: NewsflashBB;
+  margin: auto;
+}
 
 select {
   font-family: NewsflashBB;

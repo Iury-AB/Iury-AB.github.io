@@ -441,7 +441,24 @@
         </div>
 
         <div class="bloco span-2 vantagens">
-          <h1>Vantagens</h1>
+          <div style="display: flex;" id="vantagensPorTipo">
+            <h1>Vantagens</h1>
+            <label for="vantagens-classe">Classe</label>
+            <input type="number" id="vantagens-classe" readonly>
+
+            <label for="vantagens-combate">Combate</label>
+            <input type="number" id="vantagens-combate" readonly>
+
+            <label for="vantagens-geral">Geral</label>
+            <input type="number" id="vantagens-geral" readonly>
+
+            <label for="vantagens-pericia">Pericia</label>
+            <input type="number" id="vantagens-pericia" readonly>
+
+            <label for="vantagens-sorte">Sorte</label>
+            <input type="number" id="vantagens-sorte" readonly>
+          </div>
+          
           <div class="vantagens-linha">
             <span>LVL</span>
             <span>Tipo</span>
@@ -464,11 +481,11 @@
               const novaLinha = document.createElement("div");
               novaLinha.className = "vantagens-linha";
               novaLinha.innerHTML = `
-                <input type="number" id="vantagem${contadorVantagens}-lvl" title="Nível da Vantagem">
-                <select name="tipo-vantagem" id="vantagem${contadorVantagens}-tipo">
+                <input type="number" id="vantagem${contadorVantagens}-lvl" title="Nível da Vantagem" class="dependente">
+                <select name="tipo" id="vantagem${contadorVantagens}-tipo" class="dependente tipo-vantagem">
                   <option value="nenhum"> — Tipo — </option>
-                  <option value="combate">Combate</option>
                   <option value="classe">Classe</option>
+                  <option value="combate">Combate</option>
                   <option value="geral">Geral</option>
                   <option value="pericia">Pericia</option>
                   <option value="sorte">Sorte</option>

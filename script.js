@@ -308,7 +308,7 @@ function recalcularTudo() {
   calcularBonusClasse();
   calcularVida();
   calcularEstamina();
-
+  contarVantagens();
 }
 
 function filtrarTabela(tabela) {
@@ -326,9 +326,12 @@ function filtrarTabela(tabela) {
   });
 }
 
-document.querySelectorAll(".dependente").forEach(input => {
-  input.addEventListener("input", recalcularTudo);
+document.addEventListener("input", function (e) {
+  if (e.target.classList.contains("dependente")) {
+    recalcularTudo();
+  }
 });
+
 
 function atualizarBarra(corrupcao, max) {
   const valor = Number(corrupcao.value) || 0;
@@ -575,4 +578,38 @@ function calcularBonusClasse() {
   document.getElementById("vida-classe").value = vidaBonus;
   document.getElementById("estamina-classe").value = estaminaBonus;
 
+}
+
+function contarVantagens() {
+  const totalClasse = document.getElementById("vantagens-classe");
+  const totalCombate = document.getElementById("vantagens-combate");
+  const totalGeral = document.getElementById("vantagens-geral");
+  const totalPericia = document.getElementById("vantagens-pericia");
+  const totalSorte = document.getElementById("vantagens-sorte");
+
+  var classe = 0;
+  var combate = 0;
+  var geral = 0;
+  var pericia = 0;
+  var sorte = 0;
+
+  document.querySelectorAll(".tipo-vantagem").forEach(vantagem => {
+    if (vantagem.value == "classe") {
+      classe++;
+    } else if (vantagem.value == "combate") {
+      combate++;
+    } else if (vantagem.value == "geral") {
+      geral++;
+    } else if (vantagem.value == "pericia") {
+      pericia++;
+    } else if(vantagem.value == "sorte") {
+      sorte++;
+    }
+  });
+
+  totalClasse.value = classe;
+  totalCombate.value = combate;
+  totalGeral.value = geral;
+  totalPericia.value = pericia;
+  totalSorte.value = sorte;
 }
