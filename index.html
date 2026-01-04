@@ -10,46 +10,21 @@
 
   <div id="top-nav-bar" class="barra-superior">
     <div id="pagetop">
-      <img src="img/hoffens_logo_cheia_invertida.png" style="width: 54px; height: 50px; padding: 10px;">
 
-      <button onclick="salvarFicha()" class="botao-img">
-        <img src="img/save.png" title="Salvar Ficha">
+      <button class="botao-img">
+        <img src="img/sidebar.png" alt="Abrir barra lateral">
       </button>
+
+      <img src="img/hoffens_logo_cheia_invertida.png" style="width: 54px; height: 50px; padding: 10px;">
+      <span style="font-family: NerveAgent; font-size: 30px;">Hoffens Path</span>
+
+      
 
       <select id="listaFichas" onchange="carregarFicha(this.value)" class="botao">
         <option value="selecionar">— selecionar personagem —</option>
       </select>
 
-      <button onclick="deletarFicha()" class="botao-img">
-        <img src="img/delete.png" title="Apagar Ficha">
-      </button>
-
-      <button onclick="exportarFicha()" class="botao-img">
-        <img src="img/download.png" title="Baixar Ficha JSON">
-      </button>
-
-      <input type="file" accept=".json" onchange="importarFicha(event)" hidden id="import">
-      <label for="import">
-        <img src="img/open.png" alt="Abrir Ficha Json" title="Abrir Ficha JSON" class="botao-img">
-      </label>
-
-      <button onclick="limparFicha()" class="botao-img">
-        <img src="img/erase.png" title="Limpar Ficha">
-      </button>
-
-      <div style="display: flex; margin-left: auto; gap: 10px;">
-        <a href="https://docs.google.com/spreadsheets/d/1PTROQKU6QPmQJRAT3RNzee_qdXQTz9c_laLGEJlCksU/edit?usp=drive_link" class="botao-img" target="_blank">
-          <img src="img/tabela.png" alt="Tabela de graduações" title="Tabela de Graduações" style="padding: 2px;">
-        </a>
-
-        <a href="https://drive.google.com/file/d/1R_ijTMra_w-1Mz8orpTHp8HBhk5dltK3/view?usp=sharing" class="botao-img" target="_blank">
-          <img src="img/sistema.png" alt="Mutantes e Malfeitores - Módulo Básico" title="Mutantes e Malfeitores - Módulo Básico" style="padding: 2px;">
-        </a>
-
-        <a href="https://docs.google.com/document/d/1O_l7hkSmeshOtU921rGBhUMwSorntJLCDy7jn23SQxI/edit?usp=sharing" class="botao-img" target="_blank">
-          <img src="img/patch.png" alt="Hoffens Patch Note" title="Hoffens Patch Note" style="padding: 2px;">
-        </a>
-      </div>
+      
 
       
     </div>
@@ -1199,6 +1174,43 @@
         </table>
       </div>
 
+    </div>
+  </div>
+
+  <div class="barra-lateral">
+    <button onclick="salvarFicha()" class="botao-img">
+      <img src="img/save.png" title="Salvar Ficha">
+    </button>
+
+    <button onclick="deletarFicha()" class="botao-img">
+      <img src="img/delete.png" title="Apagar Ficha">
+    </button>
+
+    <button onclick="exportarFicha()" class="botao-img">
+      <img src="img/download.png" title="Baixar Ficha JSON">
+    </button>
+
+    <input type="file" accept=".json" onchange="importarFicha(event)" hidden id="import">
+    <label for="import">
+      <img src="img/open.png" alt="Abrir Ficha Json" title="Abrir Ficha JSON" class="botao-img">
+    </label>
+
+    <button onclick="limparFicha()" class="botao-img">
+      <img src="img/erase.png" title="Limpar Ficha">
+    </button>
+
+    <div style="display: flex; margin-top: auto; gap: 10px; flex-direction: column;">
+      <a href="https://docs.google.com/spreadsheets/d/1PTROQKU6QPmQJRAT3RNzee_qdXQTz9c_laLGEJlCksU/edit?usp=drive_link" class="botao-img" target="_blank">
+        <img src="img/tabela.png" alt="Tabela de graduações" title="Tabela de Graduações" style="padding: 2px;">
+      </a>
+
+      <a href="https://drive.google.com/file/d/1R_ijTMra_w-1Mz8orpTHp8HBhk5dltK3/view?usp=sharing" class="botao-img" target="_blank">
+        <img src="img/sistema.png" alt="Mutantes e Malfeitores - Módulo Básico" title="Mutantes e Malfeitores - Módulo Básico" style="padding: 2px;">
+      </a>
+
+      <a href="https://docs.google.com/document/d/1O_l7hkSmeshOtU921rGBhUMwSorntJLCDy7jn23SQxI/edit?usp=sharing" class="botao-img" target="_blank">
+        <img src="img/patch.png" alt="Hoffens Patch Note" title="Hoffens Patch Note" style="padding: 2px;">
+      </a>
     </div>
   </div>
 
