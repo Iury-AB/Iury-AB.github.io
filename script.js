@@ -77,7 +77,7 @@ function carregarIndex() {
 
   // opção padrão
   const placeholder = document.createElement("option");
-  placeholder.value = "";
+  placeholder.value = "selecionar";
   placeholder.textContent = "— selecionar personagem —";
   select.appendChild(placeholder);
 
@@ -100,18 +100,18 @@ function salvarFicha() {
 
   const nome = document.getElementById("personagem").value;
 
-  localStorage.setItem(`ficha:${nome}`, JSON.stringify(dados));
-  localStorage.setItem(`contadorVantagens:${nome}`, contadorVantagens);
-
-  document.getElementById("pagina").innerHTML = nome;
-
   const index = getIndex();
   if (!index.includes(nome)) {
     index.push(nome);
     saveIndex(index);
   }
-
   carregarIndex();
+  document.getElementById("listaFichas").value = nome;
+
+  localStorage.setItem(`ficha:${nome}`, JSON.stringify(dados));
+  localStorage.setItem(`contadorVantagens:${nome}`, contadorVantagens);
+
+  document.getElementById("pagina").innerHTML = nome;
 }
 
 function carregarFicha(nome) {
@@ -135,6 +135,7 @@ function carregarFicha(nome) {
   });
 
   document.getElementById("pagina").innerHTML = nome;
+  document.getElementById("listaFichas").value = nome;
   recalcularTudo();
 }
 
@@ -176,7 +177,7 @@ function limparFicha() {
 
   // limpa seleção de ficha
   const lista = document.getElementById("listaFichas");
-  if (lista) lista.value = "";
+  if (lista) lista.value = "selecionar";
 
   // recalcula campos automáticos
   if (typeof recalcularTudo === "function") {
