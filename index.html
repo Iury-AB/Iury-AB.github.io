@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title id="pagina">Ficha de Personagem</title>
   <link href="styles.css" rel="stylesheet">
-  <link rel="icon" href="img/hoffens_logo_cheia_invertida.png" type="image/x-icon">
+  <link rel="icon" href="img/hoffens icone.png" type="image/x-icon">
 </head>
 <body>
 
@@ -15,7 +15,7 @@
         <img src="img/sidebar.png" alt="Abrir barra lateral">
       </button>
 
-      <img src="img/hoffens_logo_cheia_invertida.png" style="width: 54px; height: 50px; padding: 10px;">
+      <img src="img/hoffens_logo_cheia_invertida.png" style="width: 54px; height: 50px; padding: 10px; filter: invert(100%);">
       <span style="font-family: NerveAgent; font-size: 30px;">Hoffens Path</span>
 
       <select id="listaFichas" onchange="carregarFicha(this.value)" class="botao">
@@ -1184,26 +1184,33 @@
         <img src="img/patch.png" alt="Hoffens Patch Note" title="Hoffens Patch Note" style="padding: 2px;">
       </a>
 
-      <button class="botao-img" onclick="abrirAjustes();" title="Ajustes">
+      <button class="botao-img" onclick="abrirMenu('menu-ajustes');" title="Ajustes" id="botao-ajustes">
         <img src="img/ajustes.png" alt="Ajustes">
-        <script>
-          function abrirAjustes() {
-            document.getElementById("menu-ajustes").classList.toggle("show");
-          }
-          
-        </script>
       </button>
 
-      <div id="menu-ajustes">
+      <div id="menu-ajustes" class="menu">
         <div class="grupo-ajustes">
-          <div class="opcao-ajuste">
+          <div class="opcao-ajuste" onclick="abrirMenu('menu-tema')">
             <span>Tema</span>
           </div>
+
           <div class="opcao-ajuste">
             <span>Cor</span>
           </div>
+
           <div class="opcao-ajuste">
             <span>Imagem de Fundo</span>
+          </div>
+
+          <div class="menu" id="menu-tema">
+            <div>
+              <input type="radio" id="escuro" value="escuro" name="tema" class="personalizacao">
+              <label for="escuro">Escuro</label>
+            </div>
+            <div>
+              <input type="radio" id="claro" value="claro" name="tema" class="personalizacao">
+              <label for="claro">Claro</label>
+            </div>
           </div>
         </div>
       </div>

@@ -685,7 +685,68 @@ function calcularTotalPontos () {
   document.getElementById("restando-pontos").value = pontosRestantes;
 }
 
-
-function ajustaTema () {
-
+function abrirMenu(menu) {
+  document.getElementById(menu).classList.toggle("show");
 }
+
+document.addEventListener("click", function (event) {
+
+  // todos os menus abertos (principal + submenus)
+  const menusAbertos = document.querySelectorAll(".menu.show");
+  const botaoAjustes = document.getElementById("botao-ajustes");
+
+  // se não há menus abertos, não faz nada
+  if (menusAbertos.length === 0) return;
+
+  // clicou no botão de ajustes? não fecha
+  if (botaoAjustes && botaoAjustes.contains(event.target)) return;
+
+  // clicou dentro de QUALQUER menu aberto? não fecha
+  for (const menu of menusAbertos) {
+    if (menu.contains(event.target)) {
+      return;
+    }
+  }
+
+  // clicou fora de tudo → fecha todos os menus
+  menusAbertos.forEach(menu => menu.classList.remove("show"));
+});
+
+function personalizar () {
+ trocaTema();
+}
+
+document.addEventListener("input", function (e) {
+  if (e.target.classList.contains("personalizacao")) {
+    personalizar();
+  }
+});
+
+function trocaTema () {
+  const selecionado = document.querySelector('input[name="tema"]:checked');
+
+  var root = document.querySelector(':root');
+
+  if (selecionado.value == "escuro") {
+    root.style.setProperty('--cor-tema-menu', '#202020');
+    root.style.setProperty('--cor-tema-menu-extra', '#303030');
+    root.style.setProperty('--cor-tema-fundo', '#181818');
+    root.style.setProperty('--cor-tema-letras', 'rgb(255, 255, 255)');
+
+    document.querySelectorAll("img").forEach(imagem => {
+      imagem.style.filter = "invert(100%)";
+    });
+  }
+  else if(selecionado.value == "claro") {
+    root.style.setProperty('--cor-tema-menu', '#ffffffff');
+    root.style.setProperty('--cor-tema-menu-extra', '#e7e7e7ff');
+    root.style.setProperty('--cor-tema-fundo', '#f0f0f0ff');
+    root.style.setProperty('--cor-tema-letras', '#181818');
+
+    document.querySelectorAll("img").forEach(imagem => {
+      imagem.style.filter = "brightness(0%)";
+    });
+  }
+}
+
+personalizar();
