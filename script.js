@@ -2,7 +2,7 @@ function exportarFicha() {
   removerVantagens();
   const dados = {};
   document.querySelectorAll("input, textarea, select").forEach(el => {
-    if (el.id) {
+    if (el.id  && !el.classList.contains("personalizacao")) {
       dados[el.id] = el.value;
     }
   });
@@ -95,7 +95,9 @@ function salvarFicha() {
   const dados = {};
 
   document.querySelectorAll("input, textarea, select").forEach(el => {
-    if (el.id) dados[el.id] = el.value;
+    if (el.id && !el.classList.contains("personalizacao")){
+      dados[el.id] = el.value;
+    }
   });
 
   const nome = document.getElementById("personagem").value;
@@ -713,12 +715,41 @@ document.addEventListener("click", function (event) {
 });
 
 function personalizar () {
- trocaTema();
+  trocaTema();
+}
+
+function salvarPersonalizacao () {
+  const dados = {};
+
+  document.querySelectorAll(".personalizacao:checked").forEach(el => {
+    if (el.id){
+      dados[el.name] = el.value;
+    }
+  });
+
+  localStorage.setItem(`tema-ficha-hoffens`, JSON.stringify(dados));
+}
+
+function carregarPersonalizacao() {
+  const dados = JSON.parse(localStorage.getItem("tema-ficha-hoffens"));
+  if (!dados) return;
+
+  Object.entries(dados).forEach(([name, value]) => {
+    const radio = document.querySelector(
+      `.personalizacao[name="${name}"][value="${value}"]`
+    );
+
+    if (radio) {
+      radio.checked = true;
+    }
+  });
+
+  personalizar();
 }
 
 document.addEventListener("input", function (e) {
   if (e.target.classList.contains("personalizacao")) {
-    personalizar();
+    personalizar();salvarPersonalizacao();
   }
 });
 
@@ -734,7 +765,8 @@ function trocaTema () {
     root.style.setProperty('--cor-tema-letras', 'rgb(255, 255, 255)');
 
     document.querySelectorAll("img").forEach(imagem => {
-      imagem.style.filter = "invert(100%)";
+      imagem.classList.remove("nao-invertido");
+      imagem.classList.add("invertido");
     });
   }
   else if(selecionado.value == "claro") {
@@ -744,9 +776,10 @@ function trocaTema () {
     root.style.setProperty('--cor-tema-letras', '#181818');
 
     document.querySelectorAll("img").forEach(imagem => {
-      imagem.style.filter = "brightness(0%)";
+      imagem.classList.remove("invertido");
+      imagem.classList.add("nao-invertido");
     });
   }
 }
 
-personalizar();
+carregarPersonalizacao();

@@ -119,7 +119,7 @@ body {
   position: fixed;
   bottom: 62px;
   left: 218px;
-  width: 200px;
+  width: auto;
 }
 
 h1 {
@@ -478,10 +478,17 @@ input[type="number"]::-webkit-outer-spin-button {
   width: 30;
   height: 30px;
   background-color: transparent;
-  filter: invert(100%);
 }
 
 .botao-img:hover img {
+  filter: invert(0%);
+}
+
+.invertido {
+  filter: invert(100%);
+}
+
+.nao-invertido {
   filter: invert(0%);
 }
 
