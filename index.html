@@ -1237,7 +1237,14 @@
           </div>
 
           <div class="menu" id="menu-fundo">
-            <input type="file" id="background-img" accept=".png" onchange="trocarFundo(event);">
+            <div class="opcao-ajuste">
+              <input type="file" id="background-img" accept=".png" onchange="trocarFundo(event);" class="personalizacao">
+            </div>
+            
+            <div class="opcao-ajuste" onclick="removerFundo();">
+              <span>Remover Imagem</span>
+            </div>
+            
           </div>
         </div>
       </div>

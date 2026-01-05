@@ -29,6 +29,14 @@ function carregarPersonalizacao() {
     }
   });
 
+  const fundoSalvo = localStorage.getItem("fundo-personalizado");
+  if (fundoSalvo) {
+    document.body.style.backgroundImage = `url("${fundoSalvo}")`;
+    document.body.style.backgroundSize = "cover";
+    document.body.style.backgroundPosition = "center";
+    document.body.style.backgroundRepeat = "no-repeat";
+  }
+
   personalizar();
 }
 
@@ -122,12 +130,26 @@ function trocarFundo(event) {
   const arquivo = event.target.files[0];
   if (!arquivo) return;
 
-  const url = URL.createObjectURL(arquivo);
+  const reader = new FileReader();
 
-  document.body.style.backgroundImage = `url("${url}")`;
-  document.body.style.backgroundSize = "cover";
-  document.body.style.backgroundPosition = "center";
-  document.body.style.backgroundRepeat = "no-repeat";
+  reader.onload = function (e) {
+    const base64 = e.target.result;
+
+    document.body.style.backgroundImage = `url("${base64}")`;
+    document.body.style.backgroundSize = "cover";
+    document.body.style.backgroundPosition = "center";
+    document.body.style.backgroundRepeat = "no-repeat";
+
+    localStorage.setItem("fundo-personalizado", base64);
+  };
+
+  reader.readAsDataURL(arquivo);
 }
+
+function removerFundo () {
+  document.body.style.backgroundImage='';
+  localStorage.removeItem("fundo-personalizado");
+}
+
 
 carregarPersonalizacao();
