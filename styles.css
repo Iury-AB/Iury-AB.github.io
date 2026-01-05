@@ -1,9 +1,4 @@
 @font-face {
-  font-family: "NewsflashBB";
-  src: url(fonts/NewsflashBB.ttf);
-}
-
-@font-face {
   font-family: "comic";
   src: url(fonts/comic.ttf);
 }
@@ -13,16 +8,27 @@
   src: url(fonts/NerveAgentFilled-Regular.ttf);
 }
 
+@font-face {
+  font-family: "BebasNeue";
+  src: url(fonts/BebasNeue-Regular.ttf);
+}
+
 :root {
   --cor-primaria: rgb(122, 179, 225);
   --cor-secundaria: rgb(90, 123, 254);
-  --cor-campo: rgba(123,181,238,0.5);
+  --cor-campo: rgba(123,181,238,0.3);
   --cor-sub: rgb(123,181,238);
+  --cor-tema-menu: #202020;
+  --cor-tema-menu-extra : #303030;
+  --cor-tema-fundo: #181818;
+  --cor-tema-letras: rgb(255, 255, 255);
+  --cor-borda: rgb(88, 88, 88);
+  --nf-spacing: 0.0em;
 }
 
 body {
   font-family: Arial, sans-serif;
-  background-color:#ddd;
+  background-color: var(--cor-tema-fundo);
   margin: 0;
   padding: 20px;
 }
@@ -33,9 +39,9 @@ body {
   margin-bottom: auto;
   margin-right: auto;
   margin-top: 70px;
-  background: #fff;
+  background: #202020;
   padding: 20px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--cor-borda);
 }
 
 .barra-lateral {
@@ -44,27 +50,78 @@ body {
   position: fixed;
   left: 0;
   top: 56px;
-  bottom: 0;
+  bottom: 20px;
   width: 56px;
   box-sizing: border-box;
-  background-color: black;
+  background-color: var(--cor-tema-menu);
   padding: 10px;
   gap: 10px;
   margin: auto;
-  border-right: 1px solid rgb(65, 65, 65);
+  border-right: 1px solid var(--cor-borda);
+  z-index: 101;
+}
+
+#menu-ajustes {
+  display: none;
+  border-radius: 5px;
+  background-color: var(--cor-tema-menu-extra);
+  border: 1px solid var(--cor-borda);
+  gap: 5px;
+  padding: 5px;
+  z-index: 101;
+}
+
+#menu-ajustes.show {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  bottom: 20px;
+  left: 56px;
+  width: 150px;
+}
+
+.opcao-ajuste {
+  border-radius: 5px;
+  border: none;
+  display: flex;
+  padding: 5px;
+}
+
+.opcao-ajuste:hover {
+  background-color: var(--cor-primaria);
+  cursor: pointer;
+}
+
+.opcao-ajuste span{
+  font-family: BebasNeue;
+  color: var(--cor-tema-letras);
+  letter-spacing: var(--nf-spacing);
+}
+
+.opcao-ajuste:hover span {
+  color: var(--cor-tema-menu);
+}
+
+.grupo-ajustes {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid var(--cor-borda);
 }
 
 h1 {
   text-align: left;
   margin-bottom: 2px;
   margin-top: 2px;
-  font-family: NewsflashBB;
+  font-family: BebasNeue;
   color:var(--cor-primaria);
   font-weight: normal;
+  letter-spacing: var(--nf-spacing);
 }
 
 input {
   font-family: comic;
+  background-color: var(--cor-tema-menu);
+  color: var(--cor-tema-letras);
 }
 
 .bloco {
@@ -160,8 +217,9 @@ th{
 }
 
 .normal-text {
-  font-family: NewsflashBB;
-  color: black;
+  font-family: BebasNeue;
+  color: var(--cor-tema-letras);
+  letter-spacing: var(--nf-spacing);
 }
 
 .small-number input {
@@ -169,10 +227,11 @@ th{
   width: 100%;
   box-sizing: border-box;
   font-size: 13px;
-  font-family: NewsflashBB;
+  font-family: BebasNeue;
   color: var(--cor-secundaria);
   text-align:center;
   border:none;
+  letter-spacing: var(--nf-spacing);
 }
 
 .field {
@@ -182,9 +241,11 @@ th{
 
 .field label {
   font-size: 15px;
-  font-family: NewsflashBB;
+  font-family: BebasNeue;
   margin-bottom: 4px;
   text-transform: uppercase;
+  color: var(--cor-tema-letras);
+  letter-spacing: var(--nf-spacing);
 }
 
 .field input {
@@ -192,6 +253,9 @@ th{
   width: 100%;
   box-sizing: border-box;
   font-size: 14px;
+  border: none;
+  border-bottom: 2px solid var(--cor-primaria);
+  background-color: var(--cor-campo);
 }
 
 .stat {
@@ -210,9 +274,11 @@ th{
 
 .hability label {
   font-size: 20px;
-  font-family: NewsflashBB;
+  font-family: BebasNeue;
   margin-bottom: 4px;
   text-transform: uppercase;
+  color: var(--cor-tema-letras);
+  letter-spacing: var(--nf-spacing);
 }
 
 .hability input {
@@ -222,9 +288,11 @@ th{
 
 .sub-hab label {
   font-size: 15px;
-  font-family: NewsflashBB;
+  font-family: BebasNeue;
   margin-bottom: 4px;
   text-transform: uppercase;
+  color: var(--cor-tema-letras);
+  letter-spacing: var(--nf-spacing);
 }
 
 .sub-hab input {
@@ -247,8 +315,10 @@ th{
 }
 
 .outros label {
-  font-family: NewsflashBB;
+  font-family: BebasNeue;
   font-size: 12px;
+  color: var(--cor-tema-letras);
+  letter-spacing: var(--nf-spacing);
 }
 
 /* Fields that should span more columns */
@@ -305,15 +375,15 @@ input[type="number"]::-webkit-outer-spin-button {
   max-width: 1750px;
   margin-left: auto;
   margin-right: auto;
-  background-color: #000;
-  border-bottom: 1px solid rgb(65, 65, 65);
+  background-color: var(--cor-tema-menu);
+  border-bottom: 1px solid var(--cor-borda);
 }
 
 #barraPontos {
   position: fixed;
   display: flex;
   align-items: center;
-  left: 56px;
+  left: 0;
   bottom: 0px;
   gap: 10px;
   padding: 0;
@@ -322,8 +392,8 @@ input[type="number"]::-webkit-outer-spin-button {
   margin-left: auto;
   margin-right: auto;
   justify-items: center;
-  background-color: black;
-  border-top: 1px solid rgb(65, 65, 65);
+  background-color: var(--cor-tema-menu);
+  border-top: 1px solid var(--cor-borda);
 }
 
 .barra-superior label {
@@ -331,7 +401,7 @@ input[type="number"]::-webkit-outer-spin-button {
   font-size: 15px;
   font-family: 'Gill Sans MT';
   font-weight: normal;
-  color: white;
+  color: var(--cor-tema-letras);
   font-weight: normal;
 }
 
@@ -339,7 +409,7 @@ input[type="number"]::-webkit-outer-spin-button {
   padding: 5px;
   font-size: 15px;
   font-family: 'Gill Sans MT';
-  color: white;
+  color: var(--cor-tema-letras);
   font-weight: normal;
 }
 
@@ -347,11 +417,11 @@ input[type="number"]::-webkit-outer-spin-button {
   background: none;
   display: flex;
   border: none;
-  color: white;
+  color: var(--cor-tema-letras);
   max-width: 40px;
   text-align: center;
   font-size: 15px;
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid var(--cor-tema-letras);
 }
 
 #top-nav-bar::before {
@@ -363,41 +433,51 @@ input[type="number"]::-webkit-outer-spin-button {
   height: 56px;
   left: 0;
   top: 0;
-  background-color: black;
+  background-color: var(--cor-tema-menu);
 }
 
 .botao {
   margin: 10px;
   padding: 8px 16px;
-  background-color: white;
-  color: black;
+  background-color: none;
+  color: var(--cor-tema-fundo);
   border-radius: 5px;
   vertical-align: middle;
   cursor: pointer;
 }
 
 .botao-img {
-  background: #fff;
-  border: 2px solid #fff;
+  background-color: transparent;
+  border: none;
   padding: 0;
   cursor: pointer;
-  border: 2px solid #fff;
   width: 35px;
   height: 35px;
   border-radius: 5px;
 }
 
+.botao-img:hover {
+  background-color: var(--cor-primaria);
+}
+
 .botao-img img {
   width: 30;
   height: 30px;
-  background-color: #fff;
+  background-color: transparent;
+  filter: invert(100%);
+}
+
+.botao-img:hover img {
+  filter: invert(0%);
 }
 
 .classe label{
-  font-family: NewsflashBB;
+  font-family: BebasNeue;
   font-size: 15px;
   position: relative;
   z-index: 1;
+  letter-spacing: var(--nf-spacing);
+  color: var(--cor-tema-letras);
 }
 
 .classe select {
@@ -405,6 +485,7 @@ input[type="number"]::-webkit-outer-spin-button {
   background-color: var(--cor-campo);
   border: none;
   border-radius: 5px;
+  color: var(--cor-tema-fundo);
 }
 
 .classe input {
@@ -414,9 +495,10 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .classe span {
-  font-size: 30px;
+  font-size: 25px;
   color: var(--cor-secundaria);
   z-index: 1;
+  opacity: 50%;
 }
 
 .vantagens span {
@@ -433,11 +515,12 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 #vantagensPorTipo label {
-  font-family: NewsflashBB;
+  font-family: BebasNeue;
   font-size: 15px;
   color: var(--cor-secundaria);
   padding: 5px;
   margin: auto;
+  letter-spacing: var(--nf-spacing);
 }
 
 #vantagensPorTipo input {
@@ -446,17 +529,21 @@ input[type="number"]::-webkit-outer-spin-button {
   width: 5%;
   text-align: center;
   max-height: 20px;
-  font-family: NewsflashBB;
+  font-family: BebasNeue;
+  letter-spacing: var(--nf-spacing);
   margin: auto;
 }
 
 select {
-  font-family: NewsflashBB;
+  font-family: BebasNeue;
+  letter-spacing: var(--nf-spacing);
+  color: var(--cor-tema-fundo);
 }
 
 span {
-  font-family: NewsflashBB;
+  font-family: BebasNeue;
   font-weight: normal;
+  letter-spacing: var(--nf-spacing);
 }
 
 #corrupcao-progresso {
@@ -467,8 +554,31 @@ span {
   margin-top: 20px;
 }
 
+#corrupcao-margem {
+  position: absolute;
+  height: 10px;
+  margin-top: 18px; 
+  border: 2px solid var(--cor-tema-letras); 
+  width: 100%;
+}
+
 .vida-estamina input{
-  background-color: rgba(255,255,255,0.5);
+  background-color: transparent;
   text-align: center;
   max-width: none;
+}
+
+.nome-pericia {
+  font-size: 18px;
+  justify-self: left;
+}
+
+.hab-pericia {
+  font-size: 13px;
+}
+
+.sub-barra-pontos {
+  flex-direction:row; 
+  display: flex; 
+  border-left: 1px solid var(--cor-borda);
 }

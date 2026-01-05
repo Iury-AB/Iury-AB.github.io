@@ -673,5 +673,19 @@ function calcularTotalPontos () {
 
   custoPontos = pontosHab + pontosVan + pontosDef + pontosPer;
 
-  document.getElementById("total-personagem").value = custoPontos;
+  const totalPersonagem = document.getElementById("total-personagem");
+  totalPersonagem.value = custoPontos;
+
+  const pontosTotal = document.getElementById("totalPontos");
+
+  document.getElementById("total-pontos").value = Number(pontosTotal.value) || 0;
+
+  var pontosRestantes = Number(pontosTotal.value) - Number(totalPersonagem.value);
+
+  document.getElementById("restando-pontos").value = pontosRestantes;
+}
+
+
+function ajustaTema () {
+
 }

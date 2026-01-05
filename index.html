@@ -41,16 +41,16 @@
 
       <div class="field">
         <label for="totalPontos">Total de Pontos</label>
-        <input type="number" id="totalPontos">
-      </div>
-
-      <div class="field dependente">
-        <label for="nivelPoder">Nivel de Poder</label>
-        <input type="number" id="nivelPoder">
+        <input type="number" id="totalPontos" class="dependente">
       </div>
 
       <div class="field">
-        <label for="genero">Genero</label>
+        <label for="nivelPoder">Nível de Poder</label>
+        <input type="number" id="nivelPoder" class="dependente">
+      </div>
+
+      <div class="field">
+        <label for="genero">Gênero</label>
         <input type="text" id="genero">
       </div>
 
@@ -85,7 +85,7 @@
       </div>
 
       <div class="field span-2">
-        <label for="base">Base de Operacoes</label>
+        <label for="base">Base de Operações</label>
         <input type="text" id="base">
       </div>
 
@@ -96,9 +96,9 @@
       <div class="sub-grupo" style="grid-template-columns: 44% 56%;">
       
         <div class="bloco habilities" id="habilidades">
-          <h1>Habilidades</h1><br>
+          <h1 class="span-2" style="justify-self: left;">Habilidades</h1>
           <div class="hability stat">
-            <label for="forca">Forca</label><br>
+            <label for="forca">Força</label><br>
             <input class="dependente habilidade" type="number" id="forca" oninput="calcularCarga()">
           </div>
 
@@ -228,7 +228,7 @@
           </div>
 
           <div class="hability stat">
-            <label for="prontidao">Prontidao</label><br>
+            <label for="prontidao">Prontidão</label><br>
             <input class="dependente habilidade" type="number" id="prontidao">
           </div>
 
@@ -238,7 +238,7 @@
           </div>
 
           <div class="hability stat">
-            <label for="presenca">Presenca</label><br>
+            <label for="presenca">Presença</label><br>
             <input class="dependente habilidade" type="number" id="presenca">
           </div>
 
@@ -303,7 +303,7 @@
             </div>
 
             <span class="normal-text" style="font-size: 20px;">
-              <span style="font-size: 13px;">(Vig)</span> Resistencia
+              <span style="font-size: 13px;">(Vig)</span> Resistência
             </span>
             <div class="sub-hab">
               <input type="number" id="resistencia-total" readonly>
@@ -342,29 +342,27 @@
                 <option value="selecione"> — Escolha uma classe — </option>
                 <option value="Ajudante">Ajudante</option>
                 <option value="Atirador">Atirador</option>
-                <option value="Belico">Belico</option>
-                <option value="Guardiao">Guardiao</option>
+                <option value="Belico">Bélico</option>
+                <option value="Guardiao">Guardião</option>
               </select>
             </div>
 
             <div class="field stat span-4">
               <input type="number" id="corrupcao" style="width: 130px;" title="Corrupção" class="dependente">
-              <div style="margin-top: 10px; margin-left: 15px;">
-                <span style="margin-right: 15px;">Corrupcao</span>
-                <span>%</span>
+              <div style="margin-top: 12px; margin-left: 17px;">
+                <span style="margin-right: 15px;">Corrupção</span>
               </div>
             </div>
 
             <div class="field hability stat span-2">
               <input type="number" id="corrupcao-maximo" style="width: 70px;" title="Limite de Corrupção">
-              <div style="margin-top: 10px; margin-left: 10px;">
+              <div style="margin-top: 12px; margin-left: 10px;">
                 <span>Limite</span>
-                <span>%</span>
               </div>
             </div>
 
             <div class="span-6" style="position: relative;">
-              <hr align="left" style="position: absolute;height: 10px;margin-top: 18px; border: 2px solid black; width: 100%;">
+              <hr align="left" id="corrupcao-margem">
               <hr id="corrupcao-progresso" align="left" style="position: relative; z-index: 2;margin-left: 2px;">
               <script>
                 const barra = document.getElementById("corrupcao-progresso");
@@ -410,9 +408,9 @@
             </div>
 
             <div class="sub-hab span-2" style="gap: 5px;">
-              <label for="vida-classe">Bonus da Classe:</label>
+              <label for="vida-classe">Bônus da Classe:</label>
               <input type="number" id="vida-classe" style="position: relative;font-size: 20px;" readonly>
-              <label for="estamina-classe">Bonus da Classe:</label>
+              <label for="estamina-classe">Bônus da Classe:</label>
               <input type="number" id="estamina-classe" style="position: relative;font-size: 20px;" readonly>
             </div>
           </div> 
@@ -538,7 +536,7 @@
         <table id="skills-table", style="width: 100%;">
           <tr class="header-row">
             <th style="width: 34%;">
-              <h1>Pericias</h1>
+              <h1>Perícias</h1>
             </th>
             <th>
               <p class="normal-text" style="font-size: 15px; text-align: center;">Total</p>
@@ -559,8 +557,8 @@
 
           <tr>
             <td>
-              <span class="normal-text" style="font-size: 20px; justify-self: left;">
-                <span style="font-size: 13px;">(Agi)</span> Acrobacia*
+              <span class="normal-text nome-pericia">
+                <span class="hab-pericia">(Agi)</span> Acrobacia*
               </span>
             </td>
             <td>
@@ -592,8 +590,8 @@
 
           <tr>
             <td>
-              <span class="normal-text" style="font-size: 20px; justify-self: left;">
-                <span style="font-size: 13px;">(For)</span> Atletismo
+              <span class="normal-text nome-pericia">
+                <span class="hab-pericia">(For)</span> Atletismo
               </span>
             </td>
             <td>
@@ -626,7 +624,7 @@
           <tr>
             <td>
               <div class="field">
-                <label for="ccc1"><span style="font-size: 13px;">(Lut)</span> Combate corpo-a-corpo</label>
+                <label for="ccc1"><span class="hab-pericia">(Lut)</span> Combate corpo-a-corpo</label>
                 <input type="text" id="ccc1">
                 <input type="text" id="ccc2">
                 <input type="text" id="ccc3">
@@ -676,8 +674,8 @@
 
           <tr>
             <td>
-              <span class="normal-text" style="font-size: 20px; justify-self: left;">
-                <span style="font-size: 13px;">(Pre)</span> Enganacao
+              <span class="normal-text nome-pericia">
+                <span class="hab-pericia">(Pre)</span> Enganação
               </span>
             </td>
             <td>
@@ -710,7 +708,7 @@
           <tr>
             <td>
               <div class="field">
-                <label for="especialidade1"><span style="font-size: 13px;">(Int)</span> Especialidade*</label>
+                <label for="especialidade1"><span class="hab-pericia">(Int)</span> Especialidade*</label>
                 <input type="text" id="especialidade1">
                 <input type="text" id="especialidade2">
                 <input type="text" id="especialidade3">
@@ -766,8 +764,8 @@
 
           <tr>
             <td>
-              <span class="normal-text" style="font-size: 20px; justify-self: left;">
-                <span style="font-size: 13px;">(Agi)</span> Furtividade
+              <span class="normal-text nome-pericia">
+                <span class="hab-pericia">(Agi)</span> Furtividade
               </span>
             </td>
             <td>
@@ -799,8 +797,8 @@
 
           <tr>
             <td>
-              <span class="normal-text" style="font-size: 20px; justify-self: left;">
-                <span style="font-size: 13px;">(Pre)</span> Intimidacao
+              <span class="normal-text nome-pericia">
+                <span class="hab-pericia">(Pre)</span> Intimidação
               </span>
             </td>
             <td>
@@ -832,8 +830,8 @@
 
           <tr>
             <td>
-              <span class="normal-text" style="font-size: 20px; justify-self: left;">
-                <span style="font-size: 13px;">(Pro)</span> Intuicao
+              <span class="normal-text nome-pericia">
+                <span class="hab-pericia">(Pro)</span> Intuição
               </span>
             </td>
             <td>
@@ -865,8 +863,8 @@
 
           <tr>
             <td>
-              <span class="normal-text" style="font-size: 20px; justify-self: left;">
-                <span style="font-size: 13px;">(Int)</span> Investigacao*
+              <span class="normal-text nome-pericia">
+                <span class="hab-pericia">(Int)</span> Investigação*
               </span>
             </td>
             <td>
@@ -898,8 +896,8 @@
 
           <tr>
             <td>
-              <span class="normal-text" style="font-size: 20px; justify-self: left;">
-                <span style="font-size: 13px;">(Pro)</span> Percepcao
+              <span class="normal-text nome-pericia">
+                <span class="hab-pericia">(Pro)</span> Percepção
               </span>
             </td>
             <td>
@@ -932,7 +930,7 @@
           <tr>
             <td>
               <div class="field">
-                <label for="ccc1"><span style="font-size: 13px;">(Des)</span> Combate a Distancia</label>
+                <label for="ccc1"><span class="hab-pericia">(Des)</span> Combate à Distância</label>
                 <input type="text" id="cad1">
                 <input type="text" id="cad2">
                 <input type="text" id="cad3">
@@ -982,8 +980,8 @@
 
           <tr>
             <td>
-              <span class="normal-text" style="font-size: 20px; justify-self: left;">
-                <span style="font-size: 13px;">(Pre)</span> Persuasao
+              <span class="normal-text nome-pericia">
+                <span class="hab-pericia">(Pre)</span> Persuasão
               </span>
             </td>
             <td>
@@ -1015,8 +1013,8 @@
 
           <tr>
             <td>
-              <span class="normal-text" style="font-size: 20px; justify-self: left;">
-                <span style="font-size: 13px;">(Des)</span> Prestidigitacao*
+              <span class="normal-text nome-pericia">
+                <span class="hab-pericia">(Des)</span> Prestidigitação*
               </span>
             </td>
             <td>
@@ -1048,8 +1046,8 @@
 
           <tr>
             <td>
-              <span class="normal-text" style="font-size: 20px; justify-self: left;">
-                <span style="font-size: 13px;">(Int)</span> Tecnologia*
+              <span class="normal-text nome-pericia">
+                <span class="hab-pericia">(Int)</span> Tecnologia*
               </span>
             </td>
             <td>
@@ -1081,8 +1079,8 @@
 
           <tr>
             <td>
-              <span class="normal-text" style="font-size: 20px; justify-self: left;">
-                <span style="font-size: 13px;">(Int)</span> Tratamento*
+              <span class="normal-text nome-pericia">
+                <span class="hab-pericia">(Int)</span> Tratamento*
               </span>
             </td>
             <td>
@@ -1114,8 +1112,8 @@
 
           <tr>
             <td>
-              <span class="normal-text" style="font-size: 20px; justify-self: left;">
-                <span style="font-size: 13px;">(Des)</span> Veiculos*
+              <span class="normal-text nome-pericia">
+                <span class="hab-pericia">(Des)</span> Veículos*
               </span>
             </td>
             <td>
@@ -1165,8 +1163,8 @@
     </button>
 
     <input type="file" accept=".json" onchange="importarFicha(event)" hidden id="import">
-    <label for="import">
-      <img src="img/open.png" alt="Abrir Ficha Json" title="Abrir Ficha JSON" class="botao-img">
+    <label for="import" class="botao-img">
+      <img src="img/open.png" alt="Abrir Ficha Json" title="Abrir Ficha JSON" class="botao-img" style="box-sizing: border-box; padding: 3px;">
     </label>
 
     <button onclick="limparFicha()" class="botao-img">
@@ -1175,7 +1173,7 @@
 
     <div style="display: flex; margin-top: auto; gap: 10px; flex-direction: column;">
       <a href="https://docs.google.com/spreadsheets/d/1PTROQKU6QPmQJRAT3RNzee_qdXQTz9c_laLGEJlCksU/edit?usp=drive_link" class="botao-img" target="_blank">
-        <img src="img/tabela.png" alt="Tabela de graduações" title="Tabela de Graduações" style="padding: 2px;">
+        <img src="img/tabela.png" alt="Tabela de graduações" title="Tabela de Graduações" style="padding: 2px; box-sizing: border-box;">
       </a>
 
       <a href="https://drive.google.com/file/d/1R_ijTMra_w-1Mz8orpTHp8HBhk5dltK3/view?usp=sharing" class="botao-img" target="_blank">
@@ -1185,29 +1183,66 @@
       <a href="https://docs.google.com/document/d/1O_l7hkSmeshOtU921rGBhUMwSorntJLCDy7jn23SQxI/edit?usp=sharing" class="botao-img" target="_blank">
         <img src="img/patch.png" alt="Hoffens Patch Note" title="Hoffens Patch Note" style="padding: 2px;">
       </a>
+
+      <button class="botao-img" onclick="abrirAjustes();" title="Ajustes">
+        <img src="img/ajustes.png" alt="Ajustes">
+        <script>
+          function abrirAjustes() {
+            document.getElementById("menu-ajustes").classList.toggle("show");
+          }
+          
+        </script>
+      </button>
+
+      <div id="menu-ajustes">
+        <div class="grupo-ajustes">
+          <div class="opcao-ajuste">
+            <span>Tema</span>
+          </div>
+          <div class="opcao-ajuste">
+            <span>Cor</span>
+          </div>
+          <div class="opcao-ajuste">
+            <span>Imagem de Fundo</span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
   <div class="barra-superior">
     <div id="barraPontos">
-      <span>Total de Pontos do Personagem:</span>
-      <label for="total-pontos-habilidades">Habilidades:</label>
-      <input type="number" id="total-pontos-habilidades" readonly>
+      <div class="sub-barra-pontos">
+        <span>Pontos do Personagem:</span>
+        <label for="total-pontos-habilidades">Habilidades:</label>
+        <input type="number" id="total-pontos-habilidades" readonly>
 
-      <label for="total-pontos-poderes">+ Poderes:</label>
-      <input type="number" id="total-pontos-poderes" readonly>
+        <label for="total-pontos-poderes">+ Poderes:</label>
+        <input type="number" id="total-pontos-poderes" readonly>
 
-      <label for="total-pontos-vantagens">+ Vantagens:</label>
-      <input type="number" id="total-pontos-vantagens" readonly>
+        <label for="total-pontos-vantagens">+ Vantagens:</label>
+        <input type="number" id="total-pontos-vantagens" readonly>
 
-      <label for="total-pontos-pericias">+ Pericias:</label>
-      <input type="number" id="total-pontos-pericias" readonly>
+        <label for="total-pontos-pericias">+ Perícias:</label>
+        <input type="number" id="total-pontos-pericias" readonly>
 
-      <label for="total-pontos-defesas">+ Defesas:</label>
-      <input type="number" id="total-pontos-defesas" readonly>
+        <label for="total-pontos-defesas">+ Defesas:</label>
+        <input type="number" id="total-pontos-defesas" readonly>
 
-      <label for="total-personagem">=</label>
-      <input type="number" id="total-personagem" readonly>
+        <label for="total-personagem">=</label>
+        <input type="number" id="total-personagem" readonly>
+      </div>
+
+      <div class="sub-barra-pontos">
+        <label for="total-pontos">Total de Pontos:</label>
+        <input type="number" id="total-pontos" readonly>
+      </div>
+
+      <div class="sub-barra-pontos">
+        <label for="restando-pontos">Pontos Restantes:</label>
+        <input type="number" id="restando-pontos" readonly>
+      </div>
+      
     </div>
   </div>
   
