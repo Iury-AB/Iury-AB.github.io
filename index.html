@@ -11,43 +11,17 @@
   <div id="top-nav-bar" class="barra-superior">
     <div id="pagetop">
 
-      <button class="botao-img">
+      <button class="botao-img" style="margin-left: 10px;">
         <img src="img/sidebar.png" alt="Abrir barra lateral">
       </button>
 
       <img src="img/hoffens_logo_cheia_invertida.png" style="width: 54px; height: 50px; padding: 10px;">
       <span style="font-family: NerveAgent; font-size: 30px;">Hoffens Path</span>
 
-      
-
       <select id="listaFichas" onchange="carregarFicha(this.value)" class="botao">
         <option value="selecionar">— selecionar personagem —</option>
       </select>
-
       
-
-      
-    </div>
-
-    <div id="barraPontos">
-      <span>Total de Pontos do Personagem:</span>
-      <label for="total-pontos-habilidades">Habilidades:</label>
-      <input type="number" id="total-pontos-habilidades" readonly>
-
-      <label for="total-pontos-poderes">+ Poderes:</label>
-      <input type="number" id="total-pontos-poderes" readonly>
-
-      <label for="total-pontos-vantagens">+ Vantagens:</label>
-      <input type="number" id="total-pontos-vantagens" readonly>
-
-      <label for="total-pontos-pericias">+ Pericias:</label>
-      <input type="number" id="total-pontos-pericias" readonly>
-
-      <label for="total-pontos-defesas">+ Defesas:</label>
-      <input type="number" id="total-pontos-defesas" readonly>
-
-      <label for="total-personagem">=</label>
-      <input type="number" id="total-personagem" readonly>
     </div>
   </div>
 
@@ -1213,6 +1187,30 @@
       </a>
     </div>
   </div>
+
+  <div class="barra-superior">
+    <div id="barraPontos">
+      <span>Total de Pontos do Personagem:</span>
+      <label for="total-pontos-habilidades">Habilidades:</label>
+      <input type="number" id="total-pontos-habilidades" readonly>
+
+      <label for="total-pontos-poderes">+ Poderes:</label>
+      <input type="number" id="total-pontos-poderes" readonly>
+
+      <label for="total-pontos-vantagens">+ Vantagens:</label>
+      <input type="number" id="total-pontos-vantagens" readonly>
+
+      <label for="total-pontos-pericias">+ Pericias:</label>
+      <input type="number" id="total-pontos-pericias" readonly>
+
+      <label for="total-pontos-defesas">+ Defesas:</label>
+      <input type="number" id="total-pontos-defesas" readonly>
+
+      <label for="total-personagem">=</label>
+      <input type="number" id="total-personagem" readonly>
+    </div>
+  </div>
+  
 
   <script src="script.js"></script>
 </body>
