@@ -14,15 +14,15 @@
 }
 
 :root {
-  --cor-primaria: rgb(122, 179, 225);
-  --cor-secundaria: rgb(90, 123, 254);
-  --cor-campo: rgba(123,181,238,0.5);
-  --cor-sub: rgb(123,181,238);
+  --cor-primaria: #7ab3e1;
+  --cor-secundaria: #5a7bfe;
+  --cor-campo: #7bb5ee80;
+  --cor-sub: #7bb5ee;
   --cor-tema-menu: #202020;
   --cor-tema-menu-extra : #303030;
   --cor-tema-fundo: #181818;
-  --cor-tema-letras: rgb(255, 255, 255);
-  --cor-borda: rgb(88, 88, 88);
+  --cor-tema-letras: #ffffff;
+  --cor-borda: #585858;
   --nf-spacing: 0.0em;
 }
 
@@ -120,6 +120,44 @@ body {
   bottom: 62px;
   left: 218px;
   width: auto;
+}
+
+#menu-cor.show {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  bottom: 55px;
+  left: 218px;
+  width: auto;
+}
+
+#menu-fundo.show {
+  display: flex;
+  position: fixed;
+  bottom: 20px;
+  left: 218px;
+  width: auto;
+}
+
+#menu-cor input {
+  display: none;
+}
+
+#menu-cor label::before {
+  content: "";
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--cor-borda);
+  display: inline-block;
+  margin-right: 6px;
+  vertical-align: middle;
+  transition: all 0.2s ease;
+  background-color: var(--cor-opcao);
+}
+
+#menu-cor input:checked + label::before {
+  background-color: var(--cor-opcao);
+  box-shadow: inset 0 0 0 3px var(--cor-tema-fundo);
 }
 
 h1 {
@@ -519,7 +557,7 @@ input[type="number"]::-webkit-outer-spin-button {
   font-size: 25px;
   color: var(--cor-secundaria);
   z-index: 1;
-  opacity: 50%;
+  opacity: 30%;
 }
 
 .vantagens span {

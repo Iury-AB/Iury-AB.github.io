@@ -688,6 +688,9 @@ function calcularTotalPontos () {
 }
 
 function abrirMenu(menu) {
+  document.querySelectorAll("#menu-ajustes .menu.show")
+    .forEach(m => m.menu !== menu && m.classList.remove("show"));
+
   document.getElementById(menu).classList.toggle("show");
 }
 
@@ -714,72 +717,3 @@ document.addEventListener("click", function (event) {
   menusAbertos.forEach(menu => menu.classList.remove("show"));
 });
 
-function personalizar () {
-  trocaTema();
-}
-
-function salvarPersonalizacao () {
-  const dados = {};
-
-  document.querySelectorAll(".personalizacao:checked").forEach(el => {
-    if (el.id){
-      dados[el.name] = el.value;
-    }
-  });
-
-  localStorage.setItem(`tema-ficha-hoffens`, JSON.stringify(dados));
-}
-
-function carregarPersonalizacao() {
-  const dados = JSON.parse(localStorage.getItem("tema-ficha-hoffens"));
-  if (!dados) return;
-
-  Object.entries(dados).forEach(([name, value]) => {
-    const radio = document.querySelector(
-      `.personalizacao[name="${name}"][value="${value}"]`
-    );
-
-    if (radio) {
-      radio.checked = true;
-    }
-  });
-
-  personalizar();
-}
-
-document.addEventListener("input", function (e) {
-  if (e.target.classList.contains("personalizacao")) {
-    personalizar();salvarPersonalizacao();
-  }
-});
-
-function trocaTema () {
-  const selecionado = document.querySelector('input[name="tema"]:checked');
-
-  var root = document.querySelector(':root');
-
-  if (selecionado.value == "escuro") {
-    root.style.setProperty('--cor-tema-menu', '#202020');
-    root.style.setProperty('--cor-tema-menu-extra', '#303030');
-    root.style.setProperty('--cor-tema-fundo', '#181818');
-    root.style.setProperty('--cor-tema-letras', 'rgb(255, 255, 255)');
-
-    document.querySelectorAll("img").forEach(imagem => {
-      imagem.classList.remove("nao-invertido");
-      imagem.classList.add("invertido");
-    });
-  }
-  else if(selecionado.value == "claro") {
-    root.style.setProperty('--cor-tema-menu', '#ffffffff');
-    root.style.setProperty('--cor-tema-menu-extra', '#e7e7e7ff');
-    root.style.setProperty('--cor-tema-fundo', '#f0f0f0ff');
-    root.style.setProperty('--cor-tema-letras', '#181818');
-
-    document.querySelectorAll("img").forEach(imagem => {
-      imagem.classList.remove("invertido");
-      imagem.classList.add("nao-invertido");
-    });
-  }
-}
-
-carregarPersonalizacao();

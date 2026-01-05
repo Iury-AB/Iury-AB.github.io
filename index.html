@@ -250,7 +250,7 @@
             <p class="normal-text" style="font-size: 13px;text-align: center;">Total</p>
             <p class="normal-text" style="font-size: 13px;text-align: center;">Grad. Defesa</p>
             <p class="normal-text" style="font-size: 13px;text-align: center;">Outros</p>
-            <p class="normal-text" style="font-size: 13px;text-align: center;color:rgb(90, 123, 254);">
+            <p class="normal-text" style="font-size: 13px;text-align: center;color: var(--cor-secundaria);">
               Max
             </p>
 
@@ -528,7 +528,7 @@
           type="text"
           id="tableFilter"
           placeholder="Buscar Perícia..."
-          style="border: 2px solid rgb(123,181,238);
+          style="border: 2px solid var(--cor-primaria);
                  border-radius: 5px;"
           oninput="filtrarTabela('skills-table')"
         >
@@ -551,7 +551,7 @@
               <p class="normal-text" style="font-size: 15px; text-align: center;">Outros</p>
             </th>
             <th style="width: 10%;">
-              <p class="normal-text" style="font-size: 13px; text-align: center; color: rgb(90, 123, 254);">Max</p>
+              <p class="normal-text" style="font-size: 13px; text-align: center; color: var(--cor-secundaria);">Max</p>
             </th>
           </tr>
 
@@ -1194,23 +1194,50 @@
             <span>Tema</span>
           </div>
 
-          <div class="opcao-ajuste">
+          <div class="opcao-ajuste" onclick="abrirMenu('menu-cor')">
             <span>Cor</span>
           </div>
 
-          <div class="opcao-ajuste">
+          <div class="opcao-ajuste" onclick="abrirMenu('menu-fundo')">
             <span>Imagem de Fundo</span>
           </div>
 
           <div class="menu" id="menu-tema">
             <div>
-              <input type="radio" id="escuro" value="escuro" name="tema" class="personalizacao" checked>
+              <input type="radio" id="escuro" value="escuro" name="tema" class="personalizacao radio-cor" checked>
               <label for="escuro">Escuro</label>
             </div>
             <div>
               <input type="radio" id="claro" value="claro" name="tema" class="personalizacao">
               <label for="claro">Claro</label>
             </div>
+          </div>
+
+          <div class="menu" id="menu-cor">
+            <input type="radio" name="cor" id="azul-claro" value="azul-claro" class="personalizacao" checked title="Azul Claro">
+            <label for="azul-claro" style="--cor-opcao: #5a7bfe">Azul Claro</label>
+
+            <input type="radio" name="cor" id="laranja" value="laranja" class="personalizacao" title="Laranja">
+            <label for="laranja" style="--cor-opcao: #ff893a">Laranja</label>
+
+            <input type="radio" name="cor" id="amarelo" value="amarelo" class="personalizacao" title="Amarelo">
+            <label for="amarelo" style="--cor-opcao: #e8d826">Amarelo</label>
+
+            <input type="radio" name="cor" id="vermelho" value="vermelho" class="personalizacao" title="Vermelho">
+            <label for="vermelho" style="--cor-opcao: #ed303c">Vermelho</label>
+
+            <input type="radio" name="cor" id="verde" value="verde" class="personalizacao" title="Verde">
+            <label for="verde" style="--cor-opcao: #108009">Verde</label>
+
+            <input type="radio" name="cor" id="roxo" value="roxo" class="personalizacao" title="Roxo">
+            <label for="roxo" style="--cor-opcao: #982296">Roxo</label>
+
+            <input type="radio" name="cor" id="rosa" value="rosa" class="personalizacao" title="Rosa">
+            <label for="rosa" style="--cor-opcao: #ffa4c4">Rosa</label>
+          </div>
+
+          <div class="menu" id="menu-fundo">
+            <input type="file" id="background-img" accept=".png" onchange="trocarFundo(event);">
           </div>
         </div>
       </div>
@@ -1255,5 +1282,6 @@
   
 
   <script src="script.js"></script>
+  <script src="theme.js"></script>
 </body>
 </html>
