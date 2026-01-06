@@ -770,6 +770,9 @@ document.addEventListener("input", function (e) {
 carregarConfig();
 
 function enviarRequest(dados, server, canal) {
+
+  const discord = document.getElementById("conectar-discord");
+  if (!discord.checked) return;
   
   fetch(server+canal, {
     method: "POST",
