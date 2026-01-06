@@ -206,6 +206,10 @@ input {
   padding: 10px;
 }
 
+.header-grid:hover {
+  background-color: var(--cor-tema-menu-extra);
+}
+
 .habilities-skills-adv {
   grid-template-columns: 55% 43%;
   border: none;
@@ -222,6 +226,10 @@ input {
   justify-items: center;
 }
 
+.habilities:hover {
+  background-color: var(--cor-tema-menu-extra);
+}
+
 .sub-grupo{
   display: grid;
 }
@@ -233,12 +241,20 @@ input {
   align-items: center;
 }
 
+.defenses:hover {
+  background-color: var(--cor-tema-menu-extra);
+}
+
 .classe {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   padding: 10px;
   font-size: 20px;
   align-items: center;
+}
+
+.classe:hover{
+  background-color: var(--cor-tema-menu-extra);
 }
 
 .skills {
@@ -248,11 +264,19 @@ input {
   justify-items: center;
 }
 
+.skills:hover {
+  background-color: var(--cor-tema-menu-extra);
+}
+
 .vantagens {
   gap: 5px;
   align-items: center;
   font-size: 15px;
   padding: 10px;
+}
+
+.vantagens:hover {
+  background-color: var(--cor-tema-menu-extra);
 }
 
 .vantagens-linha {
@@ -301,6 +325,7 @@ th{
   text-align:center;
   border:none;
   letter-spacing: var(--nf-spacing);
+  background-color: transparent;
 }
 
 .field {
@@ -372,6 +397,7 @@ th{
   text-align:center;
   max-width: 70px;
   border: 2px solid var(--cor-sub);
+  background-color: transparent;
 }
 
 .outros {
@@ -634,6 +660,7 @@ input[type="number"]::-webkit-outer-spin-button {
   font-family: BebasNeue;
   letter-spacing: var(--nf-spacing);
   margin: auto;
+  background-color: transparent;
 }
 
 select {
