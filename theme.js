@@ -151,5 +151,5 @@ function removerFundo () {
   localStorage.removeItem("fundo-personalizado");
 }
 
-
 carregarPersonalizacao();
+personalizar();

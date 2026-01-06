@@ -163,7 +163,8 @@ function limparFicha() {
       el.type === "button" ||
       el.type === "submit" ||
       el.type === "file" ||
-      el.readOnly
+      el.readOnly ||
+      el.classList.contains("personalizacao")
     ) return;
 
     if (el.tagName === "SELECT") {

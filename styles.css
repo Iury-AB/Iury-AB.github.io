@@ -445,7 +445,7 @@ input[type="number"]::-webkit-outer-spin-button {
   margin-left: auto;
   margin-right: auto;
   justify-items: center;
-  background-color: var(--cor-tema-menu);
+  background-color: var(--cor-secundaria);
   border-top: 1px solid var(--cor-borda);
 }
 
