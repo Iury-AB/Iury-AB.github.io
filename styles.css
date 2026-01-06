@@ -227,7 +227,7 @@ input {
 }
 
 .defenses {
-  grid-template-columns: 44% 15% 15% 16% 10%;
+  grid-template-columns: 40% 7% 15% 15% 14% 9%;
   gap: 2px;
   padding: 10px;
   align-items: center;
