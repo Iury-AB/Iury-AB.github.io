@@ -806,3 +806,8 @@ function testeAtributo(id, nome) {
 
   enviarRequest(dados, bot, "/habilidade");
 }
+
+function rolarPericiaPersonalizada (pericia) {
+  const nomePericia = document.getElementById(pericia).value;
+  testeAtributo(pericia+"-total", nomePericia);
+}

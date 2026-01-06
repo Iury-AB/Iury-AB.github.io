@@ -604,16 +604,19 @@
             <th style="width: 34%;">
               <h1>Perícias</h1>
             </th>
-            <th>
+            <th style="width: 7%;">
+              <br>
+            </th>
+            <th style="width: 12%;">
               <p class="normal-text" style="font-size: 15px; text-align: center;">Total</p>
             </th>
-            <th style="width: 14%;">
+            <th style="width: 12%;">
               <p class="normal-text" style="font-size: 15px; text-align: center;">Mod. de Habilidade</p>
             </th>
-            <th style="width: 14%;">
+            <th style="width: 13%;">
               <p class="normal-text" style="font-size: 15px; text-align: center;">Grad. na Pericia</p>
             </th>
-            <th style="width: 14%;">
+            <th style="width: 12%;">
               <p class="normal-text" style="font-size: 15px; text-align: center;">Outros</p>
             </th>
             <th style="width: 10%;">
@@ -626,6 +629,11 @@
               <span class="normal-text nome-pericia">
                 <span class="hab-pericia">(Agi)</span> Acrobacia*
               </span>
+            </td>
+            <td>
+              <button class="botao-rolar" onclick="testeAtributo('acrobacia-total', 'Acrobacia')">
+                <img src="img/d20.png" alt="Teste Acrobacia" title="Teste Acrobacia">
+              </button>
             </td>
             <td>
               <div class="sub-hab">
@@ -659,6 +667,11 @@
               <span class="normal-text nome-pericia">
                 <span class="hab-pericia">(For)</span> Atletismo
               </span>
+            </td>
+            <td>
+              <button class="botao-rolar" onclick="testeAtributo('atletismo-total', 'Atletismo')">
+                <img src="img/d20.png" alt="Teste Atletismo" title="Teste Atletismo">
+              </button>
             </td>
             <td>
               <div class="sub-hab">
@@ -697,6 +710,20 @@
               </div>
             </td>
             <td>
+              <div class="pericia-grupo" style="margin-top: 35px;">
+                <button class="botao-rolar" onclick="rolarPericiaPersonalizada('ccc1')">
+                  <img src="img/d20.png" alt="Teste CCC1" title="Teste CCC1">
+                </button>
+                <button class="botao-rolar" onclick="rolarPericiaPersonalizada('ccc2')">
+                  <img src="img/d20.png" alt="Teste CCC2" title="Teste CCC2">
+                </button>
+                <button class="botao-rolar" onclick="rolarPericiaPersonalizada('ccc3')">
+                  <img src="img/d20.png" alt="Teste CCC3" title="Teste CCC3">
+                </button>
+              </div>
+              
+            </td>
+            <td>
               <div class="sub-hab">
                 <br>
                 <input type="number" id="ccc1-total" readonly>
@@ -707,9 +734,9 @@
             <td>
               <div class="sub-hab">
                 <br>
-                <input class="dependente" type="number" id="ccc1-hab" style="margin: 2px;" readonly>
-                <input class="dependente" type="number" id="ccc2-hab" style="margin: 2px;" readonly>
-                <input class="dependente" type="number" id="ccc3-hab" style="margin: 2px;" readonly>
+                <input class="dependente" type="number" id="ccc1-hab" readonly>
+                <input class="dependente" type="number" id="ccc2-hab" readonly>
+                <input class="dependente" type="number" id="ccc3-hab" readonly>
               </div>
             </td>
             <td>
@@ -743,6 +770,11 @@
               <span class="normal-text nome-pericia">
                 <span class="hab-pericia">(Pre)</span> Enganação
               </span>
+            </td>
+            <td>
+              <button class="botao-rolar" onclick="testeAtributo('enganacao-total', 'Enganação')">
+                <img src="img/d20.png" alt="Teste Enganação" title="Teste Enganação">
+              </button>
             </td>
             <td>
               <div class="sub-hab">
@@ -782,6 +814,23 @@
               </div>
             </td>
             <td>
+              <div class="pericia-grupo">
+                <button class="botao-rolar" onclick="rolarPericiaPersonalizada('especialidade1')">
+                  <img src="img/d20.png" alt="Teste Especialidade 1" title="Teste Especialidade 1">
+                </button>
+                <button class="botao-rolar" onclick="rolarPericiaPersonalizada('especialidade2')">
+                  <img src="img/d20.png" alt="Teste Especialidade 2" title="Teste Especialidade 2">
+                </button>
+                <button class="botao-rolar" onclick="rolarPericiaPersonalizada('especialidade3')">
+                  <img src="img/d20.png" alt="Teste Especialidade 3" title="Teste Especialidade 3">
+                </button>
+                <button class="botao-rolar" onclick="rolarPericiaPersonalizada('especialidade4')">
+                  <img src="img/d20.png" alt="Teste Especialidade 4" title="Teste Especialidade 4">
+                </button>
+              </div>
+              
+            </td>
+            <td>
               <div class="sub-hab">
                 <br>
                 <input type="number" id="especialidade1-total" readonly>
@@ -793,10 +842,10 @@
             <td>
               <div class="sub-hab">
                 <br>
-                <input class="dependente" type="number" id="especialidade1-hab" style="margin: 2px;" readonly>
-                <input class="dependente" type="number" id="especialidade2-hab" style="margin: 2px;" readonly>
-                <input class="dependente" type="number" id="especialidade3-hab" style="margin: 2px;" readonly>
-                <input class="dependente" type="number" id="especialidade4-hab" style="margin: 2px;" readonly>
+                <input class="dependente" type="number" id="especialidade1-hab" readonly>
+                <input class="dependente" type="number" id="especialidade2-hab" readonly>
+                <input class="dependente" type="number" id="especialidade3-hab" readonly>
+                <input class="dependente" type="number" id="especialidade4-hab" readonly>
               </div>
             </td>
             <td>
@@ -835,6 +884,11 @@
               </span>
             </td>
             <td>
+              <button class="botao-rolar" onclick="testeAtributo('furtividade-total', 'Furtividade')">
+                <img src="img/d20.png" alt="Teste Furtividade" title="Teste Furtividade">
+              </button>
+            </td>
+            <td>
               <div class="sub-hab">
                 <input type="number" id="furtividade-total" readonly>
               </div>
@@ -866,6 +920,11 @@
               <span class="normal-text nome-pericia">
                 <span class="hab-pericia">(Pre)</span> Intimidação
               </span>
+            </td>
+            <td>
+              <button class="botao-rolar" onclick="testeAtributo('intimidacao-total', 'Intimidação')">
+                <img src="img/d20.png" alt="Teste Intimidação" title="Teste Intimidação">
+              </button>
             </td>
             <td>
               <div class="sub-hab">
@@ -901,6 +960,11 @@
               </span>
             </td>
             <td>
+              <button class="botao-rolar" onclick="testeAtributo('intuicao-total', 'Intuição')">
+                <img src="img/d20.png" alt="Teste Intuição" title="Teste Intuição">
+              </button>
+            </td>
+            <td>
               <div class="sub-hab">
                 <input type="number" id="intuicao-total" readonly>
               </div>
@@ -932,6 +996,11 @@
               <span class="normal-text nome-pericia">
                 <span class="hab-pericia">(Int)</span> Investigação*
               </span>
+            </td>
+            <td>
+              <button class="botao-rolar" onclick="testeAtributo('investigacao-total', 'Investigação')">
+                <img src="img/d20.png" alt="Teste Investigação" title="Teste Investigação">
+              </button>
             </td>
             <td>
               <div class="sub-hab">
@@ -967,6 +1036,11 @@
               </span>
             </td>
             <td>
+              <button class="botao-rolar" onclick="testeAtributo('percepcao-total', 'Percepção')">
+                <img src="img/d20.png" alt="Teste Percepção" title="Teste Percepção">
+              </button>
+            </td>
+            <td>
               <div class="sub-hab">
                 <input type="number" id="percepcao-total" readonly>
               </div>
@@ -996,11 +1070,25 @@
           <tr>
             <td>
               <div class="field">
-                <label for="ccc1"><span class="hab-pericia">(Des)</span> Combate à Distância</label>
+                <label for="cad1"><span class="hab-pericia">(Des)</span> Combate à Distância</label>
                 <input type="text" id="cad1">
                 <input type="text" id="cad2">
                 <input type="text" id="cad3">
               </div>
+            </td>
+            <td>
+              <div class="pericia-grupo">
+                <button class="botao-rolar" onclick="rolarPericiaPersonalizada('cad1')">
+                  <img src="img/d20.png" alt="Teste CAD1" title="Teste CAD1">
+                </button>
+                <button class="botao-rolar" onclick="rolarPericiaPersonalizada('cad2')">
+                  <img src="img/d20.png" alt="Teste CAD2" title="Teste CAD2">
+                </button>
+                <button class="botao-rolar" onclick="rolarPericiaPersonalizada('cad3')">
+                  <img src="img/d20.png" alt="Teste CAD2" title="Teste CAD3">
+                </button>
+              </div>
+              
             </td>
             <td>
               <div class="sub-hab">
@@ -1013,9 +1101,9 @@
             <td>
               <div class="sub-hab">
                 <br>
-                <input class="dependente" type="number" id="cad1-hab" style="margin: 2px;" readonly>
-                <input class="dependente" type="number" id="cad2-hab" style="margin: 2px;" readonly>
-                <input class="dependente" type="number" id="cad3-hab" style="margin: 2px;" readonly>
+                <input class="dependente" type="number" id="cad1-hab" readonly>
+                <input class="dependente" type="number" id="cad2-hab" readonly>
+                <input class="dependente" type="number" id="cad3-hab" readonly>
               </div>
             </td>
             <td>
@@ -1051,6 +1139,11 @@
               </span>
             </td>
             <td>
+              <button class="botao-rolar" onclick="testeAtributo('persuasao-total', 'Persuasão')">
+                <img src="img/d20.png" alt="Teste Persuasão" title="Teste Persuasão">
+              </button>
+            </td>
+            <td>
               <div class="sub-hab">
                 <input type="number" id="persuasao-total" readonly>
               </div>
@@ -1082,6 +1175,11 @@
               <span class="normal-text nome-pericia">
                 <span class="hab-pericia">(Des)</span> Prestidigitação*
               </span>
+            </td>
+            <td>
+              <button class="botao-rolar" onclick="testeAtributo('prestidigitacao-total', 'Prestidigitação')">
+                <img src="img/d20.png" alt="Teste Prestidigitação" title="Teste Prestidigitação">
+              </button>
             </td>
             <td>
               <div class="sub-hab">
@@ -1117,6 +1215,11 @@
               </span>
             </td>
             <td>
+              <button class="botao-rolar" onclick="testeAtributo('tecnologia-total', 'Tecnologia')">
+                <img src="img/d20.png" alt="Teste Tecnologia" title="Teste Tecnologia">
+              </button>
+            </td>
+            <td>
               <div class="sub-hab">
                 <input type="number" id="tecnologia-total" readonly>
               </div>
@@ -1150,6 +1253,11 @@
               </span>
             </td>
             <td>
+              <button class="botao-rolar" onclick="testeAtributo('tratamento-grad-total', 'Tratamento')">
+                <img src="img/d20.png" alt="Teste Tratamento" title="Teste Tratamento">
+              </button>
+            </td>
+            <td>
               <div class="sub-hab">
                 <input type="number" id="tratamento-total" readonly>
               </div>
@@ -1181,6 +1289,11 @@
               <span class="normal-text nome-pericia">
                 <span class="hab-pericia">(Des)</span> Veículos*
               </span>
+            </td>
+            <td>
+              <button class="botao-rolar" onclick="testeAtributo('veiculos-total', 'Veículos')">
+                <img src="img/d20.png" alt="Teste Veículos" title="Teste Veículos">
+              </button>
             </td>
             <td>
               <div class="sub-hab">

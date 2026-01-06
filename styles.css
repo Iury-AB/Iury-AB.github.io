@@ -544,14 +544,24 @@ input[type="number"]::-webkit-outer-spin-button {
   border: none;
   padding: 0;
   cursor: pointer;
-  width: 15px;
-  height: 15px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
 }
 
 .botao-rolar img {
-  width: 150;
+  width: 15px;
   height: 15px;
   background-color: transparent;
+}
+
+.botao-rolar:hover {
+  background-color: var(--cor-secundaria);
+  border: 1px solid var(--cor-secundaria);
+}
+
+.botao-rolar:hover img{
+  filter: invert(0%);
 }
 
 .invertido {
@@ -667,6 +677,13 @@ span {
 
 .hab-pericia {
   font-size: 13px;
+}
+
+.pericia-grupo {
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
 }
 
 .sub-barra-pontos {
