@@ -2,7 +2,7 @@ function exportarFicha() {
   removerVantagens();
   const dados = {};
   document.querySelectorAll("input, textarea, select").forEach(el => {
-    if (el.id  && !el.classList.contains("personalizacao")) {
+    if (el.id  && !el.classList.contains("personalizacao") && el.id != "tableFilter") {
       dados[el.id] = el.value;
     }
   });
