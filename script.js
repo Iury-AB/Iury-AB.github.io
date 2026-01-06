@@ -95,7 +95,7 @@ function salvarFicha() {
   const dados = {};
 
   document.querySelectorAll("input, textarea, select").forEach(el => {
-    if (el.id && !el.classList.contains("personalizacao")){
+    if (el.id && !el.classList.contains("personalizacao") && el.id != "tableFilter"){
       dados[el.id] = el.value;
     }
   });
@@ -246,6 +246,7 @@ function limitResistencia(){
 }
 
 function recalcularTudo() {
+  filtrarTabela("skills-table");
   calcularTotalAtributo("agilidade","esquiva-grad","esquiva-total","esquiva-outros");
   calcularTotalAtributo("luta","aparar-grad","aparar-total","aparar-outros");
   calcularTotalAtributo("vigor","fortitude-grad","fortitude-total","fortitude-outros");
