@@ -21,9 +21,36 @@
       <select id="listaFichas" onchange="carregarFicha(this.value)" class="botao">
         <option value="selecionar">— selecionar personagem —</option>
       </select>
+
+      <button class="botao-img botao-menu" style="margin-left: auto; margin-right: 10px;" onclick="abrirMenu('menu-discord')">
+        <img src="img/discord.webp" alt="Discord">
+      </button>
       
+      <div id="menu-discord" class="menu">
+        <div class="opcao-ajuste">
+          <label for="conectar-discord">Concectar com o Bot no Discord?</label>
+          <input type="checkbox" id="conectar-discord" class="config">
+        </div>
+
+        <div class="opcao-ajuste">
+          <label for="usuario-discord">Nome de Usuário Discord:</label>
+          <input type="text" id="usuario-discord" class="config">
+        </div>
+
+        <div class="opcao-ajuste">
+          <label for="servidor-discord">ID do Servidor Discord:</label>
+          <input type="text" id="servidor-discord" class="config">
+        </div>
+
+        <div class="opcao-ajuste">
+          <label for="bot-discord">URL do Bot:</label>
+          <input type="text" id="bot-discord" class="config">
+        </div>
+      </div>
     </div>
   </div>
+
+  
 
   <div class="sheet">
 
@@ -98,6 +125,9 @@
         <div class="bloco habilities" id="habilidades">
           <h1 class="span-2" style="justify-self: left;">Habilidades</h1>
           <div class="hability stat">
+            <button class="botao-rolar" onclick="testeAtributo('forca', 'Força')">
+              <img src="img/d20.png" alt="Rolar teste de Força" id="teste-forca">
+            </button>
             <label for="forca">Força</label><br>
             <input class="dependente habilidade" type="number" id="forca" oninput="calcularCarga()">
           </div>
@@ -190,6 +220,9 @@
           </div>
 
           <div class="hability stat">
+            <button class="botao-rolar" onclick="testeAtributo('agilidade', 'Agilidade')">
+              <img src="img/d20.png" alt="Rolar teste de Agilidade" id="teste-agilidade">
+            </button>
             <label for="agilidade">Agilidade</label><br>
             <input class="dependente habilidade" type="number" id="agilidade" oninput="calcularDeslocamento()">
           </div>
@@ -213,31 +246,49 @@
           </div>
 
           <div class="hability stat">
+            <button class="botao-rolar" onclick="testeAtributo('luta', 'Luta')">
+              <img src="img/d20.png" alt="Rolar teste de Luta" id="teste-luta">
+            </button>
             <label for="luta">Luta</label><br>
             <input class="dependente habilidade" type="number" id="luta">
           </div>
 
           <div class="hability stat">
+            <button class="botao-rolar" onclick="testeAtributo('vigor', 'Vigor')">
+              <img src="img/d20.png" alt="Rolar teste de Vigor" id="teste-vigor">
+            </button>
             <label for="vigor">Vigor</label><br>
             <input class="dependente habilidade" type="number" id="vigor" oninput="calcularVida();calcularEstamina();">
           </div>
 
           <div class="hability stat">
+            <button class="botao-rolar" onclick="testeAtributo('intelecto', 'Intelecto')">
+              <img src="img/d20.png" alt="Rolar teste de Intelecto" id="teste-intelecto">
+            </button>
             <label for="intelecto">Intelecto</label><br>
             <input class="dependente habilidade" type="number" id="intelecto">
           </div>
 
           <div class="hability stat">
+            <button class="botao-rolar" onclick="testeAtributo('prontidao', 'Prontidão')">
+              <img src="img/d20.png" alt="Rolar teste de Prontidão" id="teste-prontidao">
+            </button>
             <label for="prontidao">Prontidão</label><br>
             <input class="dependente habilidade" type="number" id="prontidao">
           </div>
 
           <div class="hability stat">
+            <button class="botao-rolar" onclick="testeAtributo('destreza', 'Destreza')">
+              <img src="img/d20.png" alt="Rolar teste de Destreza" id="teste-destreza">
+            </button>
             <label for="destreza">Destreza</label><br>
             <input class="dependente habilidade" type="number" id="destreza">
           </div>
 
           <div class="hability stat">
+            <button class="botao-rolar" onclick="testeAtributo('presenca', 'Presença')">
+              <img src="img/d20.png" alt="Rolar teste de Presença" id="teste-presenca">
+            </button>
             <label for="presenca">Presença</label><br>
             <input class="dependente habilidade" type="number" id="presenca">
           </div>
@@ -1188,7 +1239,7 @@
         <img src="img/patch.png" alt="Hoffens Patch Note" title="Hoffens Patch Note" style="padding: 2px;">
       </a>
 
-      <button class="botao-img" onclick="abrirMenu('menu-ajustes');" title="Ajustes" id="botao-ajustes">
+      <button class="botao-img botao-menu" onclick="abrirMenu('menu-ajustes');" title="Ajustes" id="botao-ajustes">
         <img src="img/ajustes.png" alt="Ajustes">
       </button>
 
