@@ -31,6 +31,7 @@ body {
   background-color: var(--cor-tema-fundo);
   margin: 0;
   padding: 20px;
+  height: 1280px;
 }
 
 .sheet {

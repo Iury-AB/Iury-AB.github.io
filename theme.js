@@ -33,7 +33,7 @@ function carregarPersonalizacao() {
   if (fundoSalvo) {
     document.body.style.backgroundImage = `url("${fundoSalvo}")`;
     document.body.style.backgroundSize = "cover";
-    document.body.style.backgroundPosition = "center";
+    document.body.style.backgroundPosition = "top";
     document.body.style.backgroundRepeat = "no-repeat";
   }
 
@@ -137,7 +137,7 @@ function trocarFundo(event) {
 
     document.body.style.backgroundImage = `url("${base64}")`;
     document.body.style.backgroundSize = "cover";
-    document.body.style.backgroundPosition = "center";
+    document.body.style.backgroundPosition = "top";
     document.body.style.backgroundRepeat = "no-repeat";
 
     localStorage.setItem("fundo-personalizado", base64);
