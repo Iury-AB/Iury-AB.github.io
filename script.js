@@ -804,7 +804,7 @@ function testeAtributo(id, nome) {
 
   const bot = document.getElementById("bot-discord").value;
 
-  enviarRequest(dados, bot, "/habilidade");
+  if (servidorDiscord != "") enviarRequest(dados, bot, "/habilidade");
 }
 
 function rolarPericiaPersonalizada (pericia) {
