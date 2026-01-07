@@ -1,8 +1,71 @@
+let contadorVantagens = 0;
+
+function adicionarVantagem() {
+  contadorVantagens++;
+  
+  const listaVantagens = document.getElementById("lista-vantagens");
+
+  const novaLinha = document.createElement("div");
+  novaLinha.className = "vantagens-linha";
+  novaLinha.innerHTML = `
+    <input type="number" id="vantagem${contadorVantagens}-lvl" title="Nível da Vantagem" class="dependente vantagem">
+    <select name="tipo" id="vantagem${contadorVantagens}-tipo" class="dependente tipo-vantagem">
+      <option value="nenhum"> — Tipo — </option>
+      <option value="classe">Classe</option>
+      <option value="combate">Combate</option>
+      <option value="geral">Geral</option>
+      <option value="pericia">Pericia</option>
+      <option value="sorte">Sorte</option>
+    </select>
+    <input type="text" id="vantagem${contadorVantagens}-nome" title="Vantagem ${contadorVantagens}" class="nome-vantagem">
+  `;
+    
+  listaVantagens.appendChild(novaLinha);
+}
+
+function removerVantagens() {
+  document.querySelectorAll(".nome-vantagem").forEach(vantagem => {
+    if (vantagem.value.trim() === "") {
+      const linha = vantagem.closest(".vantagens-linha");
+      if (linha) {
+        linha.remove();
+        contadorVantagens--;
+      }
+    }
+  });
+
+  const linhas = document.querySelectorAll(".vantagens-linha");
+
+  linhas.forEach((linha, index) => {
+    const numero = index;
+
+    const lvl = linha.querySelector('input[id$="-lvl"]');
+    const tipo = linha.querySelector('select[id$="-tipo"]');
+    const nome = linha.querySelector('input[id$="-nome"]');
+
+    if (lvl) {
+      lvl.id = `vantagem${numero}-lvl`;
+    }
+
+    if (tipo) {
+      tipo.id = `vantagem${numero}-tipo`;
+    }
+
+    if (nome) {
+      nome.id = `vantagem${numero}-nome`;
+      nome.title = `Vantagem ${numero}`;
+    }
+  });
+
+  recalcularTudo();
+}
+
 function exportarFicha() {
   removerVantagens();
   const dados = {};
   document.querySelectorAll("input, textarea, select").forEach(el => {
-    if (el.id  && !el.classList.contains("personalizacao") && el.id != "tableFilter") {
+    if (el.id  && !el.classList.contains("personalizacao") && el.id != "tableFilter" &&
+        !el.classList.contains("config")) {
       dados[el.id] = el.value;
     }
   });
@@ -95,7 +158,8 @@ function salvarFicha() {
   const dados = {};
 
   document.querySelectorAll("input, textarea, select").forEach(el => {
-    if (el.id && !el.classList.contains("personalizacao") && el.id != "tableFilter"){
+    if (el.id && !el.classList.contains("personalizacao") && el.id != "tableFilter" &&
+        !el.classList.contains("config")){
       dados[el.id] = el.value;
     }
   });
@@ -168,7 +232,8 @@ function limparFicha() {
       el.type === "submit" ||
       el.type === "file" ||
       el.readOnly ||
-      el.classList.contains("personalizacao")
+      el.classList.contains("personalizacao") ||
+      el.classList.contains("config")
     ) return;
 
     if (el.tagName === "SELECT") {
@@ -810,4 +875,25 @@ function testeAtributo(id, nome) {
 function rolarPericiaPersonalizada (pericia) {
   const nomePericia = document.getElementById(pericia).value;
   testeAtributo(pericia+"-total", nomePericia);
+}
+
+function mudarArquetipo(arquetipo) {
+  const imagemArquetipo = document.getElementById("arquetipo-simbolo");
+
+  if (arquetipo == "elemental") {
+    imagemArquetipo.src = "img/elemental_sem_fundo.png";
+  } else if (arquetipo == "criacao") {
+    imagemArquetipo.src = "img/Criacao_sem_fundo.png";
+  } else if (arquetipo == "espacial") {
+    imagemArquetipo.src = "img/Espacial_sem_fundo.png";
+  } else if (arquetipo == "corporeo") {
+    imagemArquetipo.src = "img/Corporeo_sem_fundo.png";
+  } else if (arquetipo == "destruicao") {
+    imagemArquetipo.src = "img/Destruicao_sem_fundo.png";
+  } else if (arquetipo == "nulo") {
+    imagemArquetipo.src = "img/nulo_SEM_FUNDO.png";
+  } else if (arquetipo == "inversao") {
+    imagemArquetipo.src = "img/Inversao_sem_fundo.png";
+  }
+  
 }

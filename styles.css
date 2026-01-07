@@ -301,6 +301,21 @@ input {
   text-align: left;
 }
 
+.poderes {
+  padding: 10px;
+}
+
+.poderes:hover{
+  background-color: var(--cor-tema-menu-extra);
+}
+
+.poderes label {
+  font-family: BebasNeue;
+  color: var(--cor-tema-letras);
+  font-size: 20px;
+  padding: 5px;
+}
+
 table {
   border-spacing: 0px;
 }
@@ -491,6 +506,46 @@ input[type="number"]::-webkit-outer-spin-button {
   border-top: 1px solid var(--cor-borda);
 }
 
+#barra-navegacao{
+  background-color: var(--cor-secundaria);
+  height: 30px;
+  position: fixed;
+  left: 56px;
+  width:100%;
+  top: 56px;
+  display: flex;
+}
+
+#barra-navegacao h1 {
+  font-size: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+#barra-navegacao h1:hover {
+  background-color: var(--cor-primaria);
+}
+
+#barra-navegacao a:link{
+  color: var(--cor-tema-letras);
+  text-decoration: none;
+}
+
+#barra-navegacao a:visited{
+  color: var(--cor-tema-letras);
+  text-decoration: none;
+}
+
+#barra-navegacao a:link{
+  color: var(--cor-tema-letras);
+  text-decoration: none;
+}
+
+#barra-navegacao a:hover{
+  color: var(--cor-tema-fundo);
+  text-decoration: none;
+}
+
 .barra-superior label {
   padding: 5px;
   font-size: 15px;
@@ -667,6 +722,8 @@ select {
   font-family: BebasNeue;
   letter-spacing: var(--nf-spacing);
   color: var(--cor-tema-fundo);
+  background-color: var(--cor-campo);
+  text-align: center;
 }
 
 span {
@@ -717,4 +774,30 @@ span {
   flex-direction:row; 
   display: flex; 
   border-left: 1px solid var(--cor-borda);
+}
+
+#arquetipo {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+#arquetipo-selecao {
+  background-color: var(--cor-secundaria);
+  color: var(--cor-tema-letras);
+  border: none;
+  font-size: 20px;
+  height: 52px;
+}
+
+#arquetipo-simbolo {
+  width: 40px;
+  height: 40px;
+  border-radius: 5px;
+  padding: 2px;
+}
+
+#cabecalho-poderes {
+  display: flex;
+  align-items: center;
 }

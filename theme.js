@@ -96,14 +96,14 @@ function trocaCor () {
   }
   else if (selecionado.value == "amarelo") {
     root.style.setProperty('--cor-primaria', '#ffee2eff');
-    root.style.setProperty('--cor-secundaria', '#ccbc0aff');
+    root.style.setProperty('--cor-secundaria', '#f7bd00ff');
     root.style.setProperty('--cor-campo', '#eee04780');
     root.style.setProperty('--cor-sub', '#ecde40ff');
   }
   else if (selecionado.value == "vermelho") {
     root.style.setProperty('--cor-primaria', '#ff414eff');
     root.style.setProperty('--cor-secundaria', '#f51a29ff');
-    root.style.setProperty('--cor-campo', '#ed303d41');
+    root.style.setProperty('--cor-campo', '#ff677142');
     root.style.setProperty('--cor-sub', '#ff3442ff');
   }
   else if (selecionado.value == "verde") {
@@ -115,7 +115,7 @@ function trocaCor () {
   else if (selecionado.value == "roxo") {
     root.style.setProperty('--cor-primaria', '#dc2ff3ff');
     root.style.setProperty('--cor-secundaria', '#982296');
-    root.style.setProperty('--cor-campo', '#98229671');
+    root.style.setProperty('--cor-campo', '#bd34baa1');
     root.style.setProperty('--cor-sub', '#ad0babff');
   }
   else if (selecionado.value == "rosa") {

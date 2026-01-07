@@ -50,6 +50,36 @@
     </div>
   </div>
 
+  <div class="barra-superior">
+    <div id="barra-navegacao">
+      <h1>
+        <a href="#ficha-principal">
+          Principal
+        </a>
+      </h1>
+      <h1>
+        <a href="#ficha-poderes">
+          Poderes & Dispositivos
+        </a>
+      </h1>
+      <h1>
+        <a href="">
+          Equipamento & Inventário
+        </a>
+      </h1>
+      <h1>
+        <a href="">
+          Combate
+        </a>
+      </h1>
+      <h1>
+        <a href="">
+          Anotações
+        </a>
+      </h1>
+    </div>
+  </div>
+
   <div class="sheet" id="ficha-principal">
 
     <div class="bloco header-grid">
@@ -517,71 +547,6 @@
               <img src="img/remover.png" alt="Remover Vantagem">
             </button>
           </div>
-
-          <script>
-            let contadorVantagens = 0;
-
-            function adicionarVantagem() {
-              contadorVantagens++;
-              
-              const listaVantagens = document.getElementById("lista-vantagens");
-
-              const novaLinha = document.createElement("div");
-              novaLinha.className = "vantagens-linha";
-              novaLinha.innerHTML = `
-                <input type="number" id="vantagem${contadorVantagens}-lvl" title="Nível da Vantagem" class="dependente vantagem">
-                <select name="tipo" id="vantagem${contadorVantagens}-tipo" class="dependente tipo-vantagem">
-                  <option value="nenhum"> — Tipo — </option>
-                  <option value="classe">Classe</option>
-                  <option value="combate">Combate</option>
-                  <option value="geral">Geral</option>
-                  <option value="pericia">Pericia</option>
-                  <option value="sorte">Sorte</option>
-                </select>
-                <input type="text" id="vantagem${contadorVantagens}-nome" title="Vantagem ${contadorVantagens}" class="nome-vantagem">
-              `;
-                
-              listaVantagens.appendChild(novaLinha);
-            }
-            
-            function removerVantagens() {
-              document.querySelectorAll(".nome-vantagem").forEach(vantagem => {
-                if (vantagem.value.trim() === "") {
-                  const linha = vantagem.closest(".vantagens-linha");
-                  if (linha) {
-                    linha.remove();
-                    contadorVantagens--;
-                  }
-                }
-              });
-
-              const linhas = document.querySelectorAll(".vantagens-linha");
-
-              linhas.forEach((linha, index) => {
-                const numero = index;
-
-                const lvl = linha.querySelector('input[id$="-lvl"]');
-                const tipo = linha.querySelector('select[id$="-tipo"]');
-                const nome = linha.querySelector('input[id$="-nome"]');
-
-                if (lvl) {
-                  lvl.id = `vantagem${numero}-lvl`;
-                }
-
-                if (tipo) {
-                  tipo.id = `vantagem${numero}-tipo`;
-                }
-
-                if (nome) {
-                  nome.id = `vantagem${numero}-nome`;
-                  nome.title = `Vantagem ${numero}`;
-                }
-              });
-
-              recalcularTudo();
-            }
-
-          </script>
         
       </div>
 
@@ -1328,7 +1293,33 @@
   </div>
 
   <div class="sheet" id="ficha-poderes">
+    <div class="bloco poderes">
+      <div id="cabecalho-poderes">
+        <h1>Poderes & Dispositivos</h1>
 
+        <div id="arquetipo">
+          <label for="arquetipo">Arquétipo de Poder:</label>
+          <div style="border: 2px solid var(--cor-secundaria);">
+            <img src="img/elemental_sem_fundo.png" alt="Arquétipo" id="arquetipo-simbolo">
+          </div>
+
+          <select name="arquetipo" id="arquetipo-selecao" onchange="mudarArquetipo(this.value);">
+            <option value="elemental" selected>Elemental</option>
+            <option value="criacao">Criação</option>
+            <option value="espacial">Espacial</option>
+            <option value="corporeo">Corpóreo</option>
+            <option value="destruicao">Destruição</option>
+            <option value="nulo">Nulo</option>
+            <option value="inversao">Inversão</option>
+          </select>
+        </div>
+      </div>
+      
+      <div id="lista-poderes">
+
+      </div>
+    </div>
+    
   </div>
 
   <div class="barra-lateral">
