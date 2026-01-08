@@ -110,9 +110,12 @@ function adicionarEfeito(poder) {
     <button class="botao-img" onclick="adicionarModificadores(${poder},${contadorEfeitos[poder]})" title="Adicionar Modificador ao Efeito ${contadorEfeitos[poder]} do Poder ${poder}">
       <img src="img/modificador.png" alt="Adicionar modificador">
     </button>
-    <input type="number" name="lvl-efeito" id="lvl-efeito-${poder}-${contadorEfeitos[poder]}">
-    <input type="number" name="custo-efeito" id="custo-efeito-${poder}-${contadorEfeitos[poder]}">
+    <input type="number" name="lvl-efeito" id="lvl-efeito-${poder}-${contadorEfeitos[poder]}" class="dependente">
+    <input type="number" name="custo-efeito" id="custo-efeito-${poder}-${contadorEfeitos[poder]}" class="dependente">
     <input type="text" name="nome-efeito" id="nome-efeito-${poder}-${contadorEfeitos[poder]}" placeholder="Efeito ${contadorEfeitos[poder]}">
+    <div class="small-number">
+      <input type="number" id="pontos-efeito-${poder}-${contadorEfeitos[poder]}" name="pontos-efeito"  style="font-size: 20px;" readonly>
+    </div>
   `;
 
   listaEfeitos.appendChild(novoEfeito);
@@ -224,6 +227,7 @@ function adicionarPoder() {
         <label for="">LVL</label>
         <label for="">Custo</label>
         <label for="">Efeito</label>
+        <br>
       </div>
 
       <div id="lista-efeitos-${contadorPoderes}" style="max-height: 200px; overflow-y: auto;" class="lista-efeitos">
@@ -245,6 +249,10 @@ function adicionarPoder() {
         Descrição
       </label>
       <textarea name="descricao-poder" id="descricao-poder-${contadorPoderes}" placeholder="Descrição do poder ${contadorPoderes}"></textarea>
+      <div class="small-number" style="display: flex; align-items: center;">
+        <label for="pontos-poder-${contadorPoderes}">Total de Pontos:</label>
+        <input type="number" id="pontos-poder-${contadorPoderes}" style="font-size: 20px; width: 20px" readonly>
+      </div>
     </div>
   `;
 
@@ -712,6 +720,7 @@ function recalcularTudo() {
   calcularCustoDefesas();
   calcularCustoVantagens();
   calcularCustoPericias();
+  calcularCustoPoderes();
   calcularTotalPontos();
 }
 
@@ -1046,6 +1055,52 @@ function calcularCustoVantagens () {
   });
 
   document.getElementById("total-pontos-vantagens").value = custoVantagens;
+}
+
+function custoPoder (poder) {
+  let custoPoder = 0;
+  const poderEl = document.getElementById(`poder-${poder}`);
+  if(!poderEl) return 0;
+  
+  const listaEfeitos = poderEl.querySelector(".lista-efeitos");
+  const efeitos = listaEfeitos.querySelectorAll(".efeitos-linha");
+  
+  efeitos.forEach(efeito => {
+    
+    const nivel = Number(efeito.querySelector("input[name='lvl-efeito']").value) || 0;
+    var custoPorNivel = Number(efeito.querySelector("input[name='custo-efeito']").value) || 0;
+    var fixo = 0;
+    
+    const modificadores = efeito.querySelectorAll(".modificadores-linha");
+    modificadores.forEach(modificador => {
+      
+      const tipoModif = modificador.querySelector("select[name='tipo-modificador']");
+      if(!tipoModif) return;
+      const custoModif = Number(modificador.querySelector("input[name='custo-modificador']").value) || 0;
+
+      if (tipoModif.value =="por-nivel") {
+        custoPorNivel += custoModif;
+      } else {
+        fixo += custoModif;
+      }
+    });
+    const custoEfeito = custoPorNivel * nivel + fixo;
+    efeito.querySelector("input[name='pontos-efeito']").value = custoEfeito;
+
+    custoPoder += custoEfeito;
+  });
+
+  return custoPoder;
+}
+
+function calcularCustoPoderes () {
+  let custoPoderes = 0;
+  for (let poder = 1; poder <= contadorPoderes; poder++) {
+    const custo = custoPoder(poder);
+    document.getElementById(`pontos-poder-${poder}`).value = custo;
+    custoPoderes += custo;
+  }
+  document.getElementById("total-pontos-poderes").value = custoPoderes;
 }
 
 function calcularCustoPericias () {

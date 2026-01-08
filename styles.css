@@ -330,19 +330,6 @@ th{
   letter-spacing: var(--nf-spacing);
 }
 
-.small-number input {
-  padding: 1px;
-  width: 100%;
-  box-sizing: border-box;
-  font-size: 13px;
-  font-family: BebasNeue;
-  color: var(--cor-secundaria);
-  text-align:center;
-  border:none;
-  letter-spacing: var(--nf-spacing);
-  background-color: transparent;
-}
-
 .field {
   display: flex;
   flex-direction: column;
@@ -888,7 +875,7 @@ span {
   align-items: center;
   display: grid;
   column-gap: 20px;
-  grid-template-columns: 5% 10% 10% 56%;
+  grid-template-columns: 5% 10% 10% 51% 5%;
 }
 
 .modificadores-linha {
@@ -904,10 +891,24 @@ span {
   width: 115%;
 }
 
+
 .toggle-show {
   transition: transform 0.5s;
 }
 
 .toggle-show.show {
   transform: rotate(-90deg);
+}
+
+.small-number input {
+  padding: 1px;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 13px;
+  font-family: BebasNeue;
+  color: var(--cor-secundaria);
+  text-align:center;
+  border:none;
+  letter-spacing: var(--nf-spacing);
+  background-color: transparent;
 }
