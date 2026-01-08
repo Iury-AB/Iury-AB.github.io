@@ -589,11 +589,17 @@ input[type="number"]::-webkit-outer-spin-button {
 .botao {
   margin: 10px;
   padding: 8px 16px;
-  background-color: var(--cor-tema-letras);
-  color: var(--cor-tema-fundo);
+  background-color: var(--cor-secundaria);
+  color: var(--cor-tema-letras);
   border-radius: 5px;
+  border: var(--cor-secundaria);
   vertical-align: middle;
   cursor: pointer;
+  font-family: BebasNeue;
+}
+
+.botao:hover {
+  background-color: var(--cor-primaria);
 }
 
 .botao-img {
@@ -807,6 +813,9 @@ span {
 .poder-linha {
   display: grid;
   grid-template-columns: 45% 55%;
+  padding-bottom: 5px;
+  padding-top: 5px;
+  border-bottom: 2px dotted var(--cor-secundaria);
 }
 
 .poder-linha input {

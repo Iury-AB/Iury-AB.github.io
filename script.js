@@ -62,12 +62,12 @@ function removerVantagens() {
 
 const contadorModificadores = [];
 
-function adicionarModificadores(efeito) {
+function adicionarModificadores(poder, efeito) {
 
-  contadorModificadores[efeito]++;
+  contadorModificadores[poder][efeito]++;
 
-  const listaModificadores = document.getElementById(`efeito-1-${efeito}`);
-  if (contadorModificadores[efeito] == 1) {
+  const listaModificadores = document.getElementById(`efeito-${poder}-${efeito}`);
+  if (contadorModificadores[poder][efeito] == 1) {
     const cabecalho = document.createElement("div");
     cabecalho.className = "modificadores-linha span-4";
     cabecalho.innerHTML = `
@@ -83,50 +83,52 @@ function adicionarModificadores(efeito) {
   novaLinha.className = "modificadores-linha span-4";
   novaLinha.innerHTML = `
     <br>
-    <input type="number" id="custo-modificador-1-${efeito}-${contadorModificadores[efeito]}" name="custo-modificador" class="dependente">
-    <select name="tipo-modificador" id="tipo-modificador-1-${efeito}-${contadorModificadores[efeito]}" class="dependente">
+    <input type="number" id="custo-modificador-${poder}-${efeito}-${contadorModificadores[poder][efeito]}" name="custo-modificador" class="dependente">
+    <select name="tipo-modificador" id="tipo-modificador-${poder}-${efeito}-${contadorModificadores[poder][efeito]}" class="dependente">
       <option value="por-nivel">Por Nível</option>
       <option value="fixo-por-nivel">Fixo por Nível</option>
       <option value="fixo">Fixo</option>
     </select>
-    <input type="text" id="nome-modificador-1-${efeito}-${contadorModificadores[efeito]}" name="nome-modificador">
+    <input type="text" id="nome-modificador-${poder}-${efeito}-${contadorModificadores[poder][efeito]}" name="nome-modificador">
   `;
 
   listaModificadores.appendChild(novaLinha);
 }
 
-let contadorEfeitos = 0;
+let contadorEfeitos = [];
 
-function adicionarEfeito() {
-  contadorEfeitos++;
-  contadorModificadores[contadorEfeitos] = 0;
+function adicionarEfeito(poder) {
+  contadorEfeitos[poder]++;
+  contadorModificadores[poder][contadorEfeitos[poder]] = 0;
 
-  const listaEfeitos = document.getElementById("lista-efeitos-1");
+  const listaEfeitos = document.getElementById(`lista-efeitos-${poder}`);
 
   const novoEfeito = document.createElement("div");
   novoEfeito.className = "efeitos-linha";
-  novoEfeito.id = `efeito-1-${contadorEfeitos}`;
+  novoEfeito.id = `efeito-${poder}-${contadorEfeitos[poder]}`;
   novoEfeito.innerHTML = `
-    <button class="botao-img" title="Adicionar Modificador ao Poder" onclick="adicionarModificadores(${contadorEfeitos})">
+    <button class="botao-img" onclick="adicionarModificadores(${poder},${contadorEfeitos[poder]})" title="Adicionar Modificador ao Efeito ${contadorEfeitos[poder]} do Poder ${poder}">
       <img src="img/modificador.png" alt="Adicionar modificador">
     </button>
-    <input type="number" name="lvl-efeito" id="lvl-efeito-1-${contadorEfeitos}">
-    <input type="number" name="custo-efeito" id="custo-efeito-1-${contadorEfeitos}">
-    <input type="text" name="nome-efeito" id="nome-efeito-1-${contadorEfeitos}">
+    <input type="number" name="lvl-efeito" id="lvl-efeito-${poder}-${contadorEfeitos[poder]}">
+    <input type="number" name="custo-efeito" id="custo-efeito-${poder}-${contadorEfeitos[poder]}">
+    <input type="text" name="nome-efeito" id="nome-efeito-${poder}-${contadorEfeitos[poder]}">
   `;
 
   listaEfeitos.appendChild(novoEfeito);
   trocaTema();
 }
 
-function removerEfeitos() {
-  document.querySelectorAll('input[name="nome-efeito"]').forEach(efeito => {
+function removerEfeitos(poder) {
+  const poderLinha = document.getElementById(`poder-${poder}`);
+
+  poderLinha.querySelectorAll('input[name="nome-efeito"]').forEach(efeito => {
     let efeitoN = efeito.id.at(-1) ;
     const linha = efeito.closest(".efeitos-linha");
     if (efeito.value.trim() === "") {
       if (linha) {
         linha.remove();
-        contadorEfeitos--;
+        contadorEfeitos[poder]--;
       }
     } else if (linha){
       linha.querySelectorAll('input[name="nome-modificador"]').forEach(modificador => {
@@ -134,11 +136,11 @@ function removerEfeitos() {
           const modificadorLinha = modificador.closest(".modificadores-linha");
           if (modificadorLinha) {
             modificadorLinha.remove();
-            contadorModificadores[efeitoN]--;
+            contadorModificadores[poder][efeitoN]--;
           }
         }
       });
-      if (contadorModificadores[efeitoN] == 0) {
+      if (contadorModificadores[poder][efeitoN] == 0) {
         const cabecalho = linha.querySelector(".modificadores-linha");
         if (cabecalho) {
           cabecalho.remove();
@@ -147,7 +149,7 @@ function removerEfeitos() {
     }
   });
 
-  const linhas = document.querySelectorAll(".efeitos-linha");
+  const linhas = poderLinha.querySelectorAll(".efeitos-linha");
 
   linhas.forEach((linhaEfeito, indexEfeito) => {
 
@@ -182,6 +184,61 @@ function removerEfeitos() {
       }
     });
   });
+}
+
+let contadorPoderes = 0;
+
+function adicionarPoder() {
+  contadorPoderes++;
+  contadorEfeitos[contadorPoderes] = 0;
+  contadorModificadores[contadorPoderes] = [];
+
+  const listaPoderes = document.getElementById("lista-poderes");
+
+  const novoPoder = document.createElement("div");
+  novoPoder.className = "poder-linha";
+  novoPoder.id = `poder-${contadorPoderes}`;
+
+  novoPoder.innerHTML = `
+    <div class="span-2" style="display: flex;">
+      <button title="Mostrar Efeitos" class="botao-img" onclick="ocultarDetalhesPoder(${contadorPoderes})">
+        <img src="img/mais.png" alt="Mostrar Efeitos">
+      </button>
+      <input type="text" id="nome-poder-${contadorPoderes}">
+    </div>
+    
+    <div class="efeitos-modificadores">
+      <div class="efeitos-linha">
+        <br>
+        <label for="">LVL</label>
+        <label for="">Custo</label>
+        <label for="">Efeito</label>
+      </div>
+
+      <div id="lista-efeitos-${contadorPoderes}" style="max-height: 200px; overflow-y: auto;">
+      </div>
+
+      <div style="justify-self: center; display: flex;">
+        <button class="botao-img" title="Adicionar Efeito ao Poder ${contadorPoderes}" onclick="adicionarEfeito(${contadorPoderes})" style="width: 50%;">
+          <img src="img/adicionar.png" alt="Adicionar Efeito">
+        </button>
+
+        <button class="botao-img" title="Remover Efeitos e Modificadores Vazios do Poder ${contadorPoderes}" onclick="removerEfeitos(${contadorPoderes})" style="width: 50%;">
+          <img src="img/remover.png" alt="Remover Efeitos Vazios">
+        </button>
+      </div>
+    </div>
+
+    <div class="descricao-poder">
+      <label for="descricao-poder-${contadorPoderes}">
+        Descrição
+      </label>
+      <textarea name="descricao-poder" id="descricao-poder-${contadorPoderes}"></textarea>
+    </div>
+  `;
+
+  listaPoderes.appendChild(novoPoder);
+  trocaTema();
 }
 
 function exportarFicha() {

@@ -1316,46 +1316,11 @@
       </div>
       
       <div id="lista-poderes">
-        <div class="poder-linha" id="poder-1">
-          <div class="span-2" style="display: flex;">
-            <button title="Mostrar Efeitos" class="botao-img" onclick="ocultarDetalhesPoder(1)">
-              <img src="img/mais.png" alt="Mostrar Efeitos">
-            </button>
-            <input type="text" id="nome-poder-1">
-          </div>
-          
-          <div class="efeitos-modificadores">
-            <div class="efeitos-linha">
-              <br>
-              <label for="lvl-efeito-1-1">LVL</label>
-              <label for="custo-efeito-1-1">Custo</label>
-              <label for="nome-efeito">Efeito</label>
-            </div>
-
-            <div id="lista-efeitos-1" style="max-height: 200px; overflow-y: auto;">
-            </div>
-
-            <div style="justify-self: center; display: flex;">
-              <button class="botao-img" title="Adicionar Efeito ao Poder" onclick="adicionarEfeito()" style="width: 50%;">
-                <img src="img/adicionar.png" alt="Adicionar Efeito">
-              </button>
-
-              <button class="botao-img" title="Remover Efeitos e Modificadores Vazios" onclick="removerEfeitos()" style="width: 50%;">
-                <img src="img/remover.png" alt="Remover Efeitos Vazios">
-              </button>
-            </div>
-          </div>
-
-          <div class="descricao-poder">
-            <label for="descricao-poder-1">
-              Descrição
-            </label>
-            <textarea name="descricao-poder" id="descricao-poder-1"></textarea>
-          </div>
-
-        </div>
-        
       </div>
+
+      <button class="botao" title="Adicionar Poder" onclick="adicionarPoder()">
+        +Adicionar Poder
+      </button>
     </div>
     
   </div>
