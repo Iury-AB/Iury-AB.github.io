@@ -281,9 +281,25 @@ input {
 
 .vantagens-linha {
   display: grid;
-  grid-template-columns: 10% 15% 70%;
-  gap: 10px;
-  margin: 3px;
+  grid-template-columns: 10% 15% 65% 5%;
+  gap: 5px;
+  margin: 5px;
+}
+
+.vantagens-linha textarea {
+  background-color: var(--cor-campo);
+  border: none;
+  border-radius: 5px;
+  font-family: comic;
+  color: var(--cor-tema-letras);
+  padding: 5px;
+  max-height: 500px;
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    max-height 0.4s ease,
+    opacity 0.25s ease,
+    transform 0.25s ease;
 }
 
 #lista-vantagens {
@@ -859,7 +875,8 @@ span {
 }
 
 .descricao-poder.hide,
-.efeitos-modificadores.hide {
+.efeitos-modificadores.hide,
+.vantagens-linha textarea.hide {
   max-height: 0;
   opacity: 0;
   transform: translateY(-8px);
@@ -898,6 +915,10 @@ span {
 
 .toggle-show.show {
   transform: rotate(-90deg);
+}
+
+.vantagens-toggle.toggle-show.show {
+  transform: rotate(90deg);
 }
 
 .small-number input {

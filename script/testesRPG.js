@@ -37,13 +37,13 @@ function testeAtributo(id, nome) {
 }
 
 function rolarPericiaPersonalizada (pericia) {
-  const nomePericia = document.getElementById(pericia).value;
+  const nomePericia = document.getElementById(pericia).value || "Perícia";
   testeAtributo(pericia+"-total", nomePericia);
 }
 
 function rolarPoderPersonalizado (poder, efeito) {
-  const nomePoder = document.getElementById(`nome-poder-${poder}`).value;
-  const nomeEfeito = document.getElementById(`nome-efeito-${poder}-${efeito}`).value;
+  const nomePoder = document.getElementById(`nome-poder-${poder}`).value || "Teste de Poder";
+  const nomeEfeito = document.getElementById(`nome-efeito-${poder}-${efeito}`).value || "Efeito";
   const nomeTeste = `${nomePoder} [${nomeEfeito}]`;
   testeAtributo(`lvl-efeito-${poder}-${efeito}`, nomeTeste);
 }

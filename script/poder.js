@@ -153,8 +153,8 @@ function adicionarPoder() {
 
   novoPoder.innerHTML = `
     <div class="span-2" style="display: flex;">
-      <button title="Ocultar Efeitos do Poder" class="botao-img toggle-show mostrar-poder" onclick="ocultarDetalhesPoder(${contadorPoderes})" id="mostrar-poder-${contadorPoderes}">
-        <img src="img/mais.png" alt="Mostrar Efeitos">
+      <button title="Ocultar Efeitos do Poder" class="botao-img mostrar-poder" onclick="ocultarDetalhesPoder(${contadorPoderes})" id="mostrar-poder-${contadorPoderes}">
+        <img src="img/mais.png" alt="Mostrar Efeitos" class="toggle-show">
       </button>
       <input type="text" id="nome-poder-${contadorPoderes}" placeholder="Nome do Poder ${contadorPoderes}" class="nome-poder">
       <button class="botao-img apagar-poder" title="Apagar Poder ${contadorPoderes}" onclick="removerPoder(${contadorPoderes})" id="apagar-poder-${contadorPoderes}">
@@ -327,8 +327,9 @@ function ocultarDetalhesPoder(poderId) {
   if (!poderEl) return;
 
   const botao = document.getElementById(`mostrar-poder-${poderId}`);
-  botao.classList.toggle("show");
-  if (botao.classList.contains("show")) {
+  const imgBotao = botao.querySelector("img");
+  imgBotao.classList.toggle("show");
+  if (imgBotao.classList.contains("show")) {
     botao.title = "Mostrar Efeitos do Poder";
   } else {
     botao.title = "Ocultar Efeitos do Poder";
