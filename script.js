@@ -60,6 +60,130 @@ function removerVantagens() {
   recalcularTudo();
 }
 
+const contadorModificadores = [];
+
+function adicionarModificadores(efeito) {
+
+  contadorModificadores[efeito]++;
+
+  const listaModificadores = document.getElementById(`efeito-1-${efeito}`);
+  if (contadorModificadores[efeito] == 1) {
+    const cabecalho = document.createElement("div");
+    cabecalho.className = "modificadores-linha span-4";
+    cabecalho.innerHTML = `
+      <br>
+      <label for="">Custo</label>
+      <label for="">Tipo</label>
+      <label for="">Modificador</label>
+    `;
+    listaModificadores.appendChild(cabecalho);
+  }
+
+  const novaLinha = document.createElement("div");
+  novaLinha.className = "modificadores-linha span-4";
+  novaLinha.innerHTML = `
+    <br>
+    <input type="number" id="custo-modificador-1-${efeito}-${contadorModificadores[efeito]}" name="custo-modificador" class="dependente">
+    <select name="tipo-modificador" id="tipo-modificador-1-${efeito}-${contadorModificadores[efeito]}" class="dependente">
+      <option value="por-nivel">Por Nível</option>
+      <option value="fixo-por-nivel">Fixo por Nível</option>
+      <option value="fixo">Fixo</option>
+    </select>
+    <input type="text" id="nome-modificador-1-${efeito}-${contadorModificadores[efeito]}" name="nome-modificador">
+  `;
+
+  listaModificadores.appendChild(novaLinha);
+}
+
+let contadorEfeitos = 0;
+
+function adicionarEfeito() {
+  contadorEfeitos++;
+  contadorModificadores[contadorEfeitos] = 0;
+
+  const listaEfeitos = document.getElementById("lista-efeitos-1");
+
+  const novoEfeito = document.createElement("div");
+  novoEfeito.className = "efeitos-linha";
+  novoEfeito.id = `efeito-1-${contadorEfeitos}`;
+  novoEfeito.innerHTML = `
+    <button class="botao-img" title="Adicionar Modificador ao Poder" onclick="adicionarModificadores(${contadorEfeitos})">
+      <img src="img/modificador.png" alt="Adicionar modificador">
+    </button>
+    <input type="number" name="lvl-efeito" id="lvl-efeito-1-${contadorEfeitos}">
+    <input type="number" name="custo-efeito" id="custo-efeito-1-${contadorEfeitos}">
+    <input type="text" name="nome-efeito" id="nome-efeito-1-${contadorEfeitos}">
+  `;
+
+  listaEfeitos.appendChild(novoEfeito);
+  trocaTema();
+}
+
+function removerEfeitos() {
+  document.querySelectorAll('input[name="nome-efeito"]').forEach(efeito => {
+    let efeitoN = efeito.id.at(-1) ;
+    const linha = efeito.closest(".efeitos-linha");
+    if (efeito.value.trim() === "") {
+      if (linha) {
+        linha.remove();
+        contadorEfeitos--;
+      }
+    } else if (linha){
+      linha.querySelectorAll('input[name="nome-modificador"]').forEach(modificador => {
+        if (modificador.value.trim() == "") {
+          const modificadorLinha = modificador.closest(".modificadores-linha");
+          if (modificadorLinha) {
+            modificadorLinha.remove();
+            contadorModificadores[efeitoN]--;
+          }
+        }
+      });
+      if (contadorModificadores[efeitoN] == 0) {
+        const cabecalho = linha.querySelector(".modificadores-linha");
+        if (cabecalho) {
+          cabecalho.remove();
+        }
+      }
+    }
+  });
+
+  const linhas = document.querySelectorAll(".efeitos-linha");
+
+  linhas.forEach((linhaEfeito, indexEfeito) => {
+
+    const lvl = linhaEfeito.querySelector('input[name="lvl-efeito"]');
+    const custo = linhaEfeito.querySelector('input[name="custo-efeito"]');
+    const nome = linhaEfeito.querySelector('input[name="nome-efeito"]');
+
+    if (lvl) {
+      lvl.id = `lvl-efeito-1-${indexEfeito}`;
+    }
+
+    if (custo) {
+      custo.id = `custo-efeito-1-${indexEfeito}`;
+    }
+
+    if (nome) {
+      nome.id = `nome-efeito-1-${indexEfeito}`;
+    }
+
+    const linhasModif = linhaEfeito.querySelectorAll(".modificadores-linha");
+
+    linhasModif.forEach((linhaModificador, indexModificador) => {
+
+      const custoM = linhaModificador.querySelector('input[name="nome-modificador"]');
+      const tipoM = linhaModificador.querySelector('input[name="tipo-modificador"]');
+      const nomeM = linhaModificador.querySelector('input[name="nome-modificador"]');
+
+      if(custoM) {
+        custoM.id = `custo-modificador-1-${indexEfeito}-${indexModificador}`;
+        tipoM.id = `tipo-modificador-1-${indexEfeito}-${indexModificador}`;
+        nomeM.id = `nome-modificador-1-${indexEfeito}-${indexModificador}`;
+      }
+    });
+  });
+}
+
 function exportarFicha() {
   removerVantagens();
   const dados = {};
@@ -176,6 +300,8 @@ function salvarFicha() {
 
   localStorage.setItem(`ficha:${nome}`, JSON.stringify(dados));
   localStorage.setItem(`contadorVantagens:${nome}`, contadorVantagens);
+  localStorage.setItem(`contadorModificadores:${nome}`, JSON.stringify(contadorModificadores));
+  localStorage.setItem(`contadorEfeitos:${nome}`, contadorEfeitos);
 
   document.getElementById("pagina").innerHTML = nome;
 }
@@ -896,4 +1022,17 @@ function mudarArquetipo(arquetipo) {
     imagemArquetipo.src = "img/Inversao_sem_fundo.png";
   }
   
+}
+
+function ocultarDetalhesPoder(poderId) {
+  const poderEl = document.getElementById(`poder-${poderId}`);
+  if (!poderEl) return;
+
+  const elementos = poderEl.querySelectorAll(
+    ".efeitos-modificadores, .descricao-poder"
+  );
+
+  elementos.forEach(el => {
+    el.classList.toggle("hide");
+  });
 }

@@ -724,6 +724,7 @@ select {
   color: var(--cor-tema-fundo);
   background-color: var(--cor-campo);
   text-align: center;
+  color: #181818;
 }
 
 span {
@@ -800,4 +801,79 @@ span {
 #cabecalho-poderes {
   display: flex;
   align-items: center;
+  margin: 5px;
+}
+
+.poder-linha {
+  display: grid;
+  grid-template-columns: 45% 55%;
+}
+
+.poder-linha input {
+  display: flex;
+  background-color: var(--cor-campo);
+  width: 100%;
+  height: 20px;
+  border-radius: 5px;
+  border: 2px solid var(--cor-secundaria);
+  padding: 5px;
+}
+
+.descricao-poder {
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+}
+
+.descricao-poder.hide {
+  display: none;
+}
+
+.descricao-poder textarea {
+  background-color: var(--cor-campo);
+  border-radius: 5px;
+  border: 2px solid var(--cor-secundaria);
+  padding: 5px;
+  color: var(--cor-tema-letras);
+  font-family: comic;
+  height: 100%;
+}
+
+.descricao-poder label{
+  font-size: 15px;
+}
+
+.efeitos-modificadores {
+  display: flex;
+  align-items: top;
+  flex-direction: column;
+}
+
+.efeitos-modificadores.hide {
+  display: none;
+}
+
+.efeitos-modificadores label {
+  justify-self: left;
+  font-size: 15px;
+}
+
+.efeitos-linha {
+  align-items: center;
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: 5% 10% 10% 56%;
+}
+
+.modificadores-linha {
+  display: grid;
+  grid-template-columns: 5% 10% 20% 49%;
+  column-gap: 20px;
+  margin-bottom: 5px;
+}
+
+.modificadores-linha select {
+  border: none;
+  border-radius: 5px;
+  width: 115%;
 }
