@@ -69,7 +69,7 @@ function adicionarModificadores(poder, efeito) {
   const listaModificadores = document.getElementById(`efeito-${poder}-${efeito}`);
   if (contadorModificadores[poder][efeito] == 1) {
     const cabecalho = document.createElement("div");
-    cabecalho.className = "modificadores-linha span-4";
+    cabecalho.className = "modificadores-linha span-5";
     cabecalho.innerHTML = `
       <br>
       <label for="">Custo</label>
@@ -80,7 +80,7 @@ function adicionarModificadores(poder, efeito) {
   }
 
   const novaLinha = document.createElement("div");
-  novaLinha.className = "modificadores-linha span-4";
+  novaLinha.className = "modificadores-linha span-5";
   novaLinha.innerHTML = `
     <br>
     <input type="number" id="custo-modificador-${poder}-${efeito}-${contadorModificadores[poder][efeito]}" name="custo-modificador" class="dependente">
@@ -109,6 +109,9 @@ function adicionarEfeito(poder) {
   novoEfeito.innerHTML = `
     <button class="botao-img" onclick="adicionarModificadores(${poder},${contadorEfeitos[poder]})" title="Adicionar Modificador ao Efeito ${contadorEfeitos[poder]} do Poder ${poder}">
       <img src="img/modificador.png" alt="Adicionar modificador">
+    </button>
+    <button class="botao-rolar" onclick="rolarPoderPersonalizado(${poder}, ${contadorEfeitos[poder]})">
+      <img src="img/d20.png" alt="Rolar teste de Poder" id="teste-efeito-${poder}-${contadorEfeitos[poder]}">
     </button>
     <input type="number" name="lvl-efeito" id="lvl-efeito-${poder}-${contadorEfeitos[poder]}" class="dependente">
     <input type="number" name="custo-efeito" id="custo-efeito-${poder}-${contadorEfeitos[poder]}" class="dependente">
@@ -212,7 +215,7 @@ function adicionarPoder() {
 
   novoPoder.innerHTML = `
     <div class="span-2" style="display: flex;">
-      <button title="Mostrar Efeitos" class="botao-img toggle-show mostrar-poder" onclick="ocultarDetalhesPoder(${contadorPoderes})" id="mostrar-poder-${contadorPoderes}">
+      <button title="Ocultar Efeitos do Poder" class="botao-img toggle-show mostrar-poder" onclick="ocultarDetalhesPoder(${contadorPoderes})" id="mostrar-poder-${contadorPoderes}">
         <img src="img/mais.png" alt="Mostrar Efeitos">
       </button>
       <input type="text" id="nome-poder-${contadorPoderes}" placeholder="Nome do Poder ${contadorPoderes}" class="nome-poder">
@@ -223,6 +226,7 @@ function adicionarPoder() {
     
     <div class="efeitos-modificadores">
       <div class="efeitos-linha">
+        <label for="">Modif.</label>
         <br>
         <label for="">LVL</label>
         <label for="">Custo</label>
@@ -1212,48 +1216,6 @@ document.addEventListener("input", function (e) {
 
 carregarConfig();
 
-function enviarRequest(dados, server, canal) {
-
-  const discord = document.getElementById("conectar-discord");
-  if (!discord.checked) return;
-  
-  fetch(server+canal, {
-    method: "POST",
-    body: JSON.stringify(dados),
-    headers: {
-      "Content-type": "application/json; charset=UTF-8"
-    }
-  })
-    .then((response) => response.json())
-    .then(json => alert(JSON.stringify(json, null, 2)));
-
-}
-
-function testeAtributo(id, nome) {
-  var atributo = Number(document.getElementById(id).value) || 0;
-  var rolagem = Math.floor(Math.random() * 20) + 1;
-
-  var resultado = rolagem + atributo;
-
-  const jogador = document.getElementById("usuario-discord").value || "---";
-  const servidorDiscord = document.getElementById("servidor-discord").value;
-
-  var dados = {
-    [`resultado.${nome}`]: resultado,
-    [`Hab.${nome}`]: atributo,
-    "discordID": servidorDiscord,
-    "Jogador": jogador
-  };
-
-  const bot = document.getElementById("bot-discord").value;
-
-  if (servidorDiscord != "") enviarRequest(dados, bot, "/habilidade");
-}
-
-function rolarPericiaPersonalizada (pericia) {
-  const nomePericia = document.getElementById(pericia).value;
-  testeAtributo(pericia+"-total", nomePericia);
-}
 
 function mudarArquetipo(arquetipo) {
   const imagemArquetipo = document.getElementById("arquetipo-simbolo");
@@ -1282,6 +1244,11 @@ function ocultarDetalhesPoder(poderId) {
 
   const botao = document.getElementById(`mostrar-poder-${poderId}`);
   botao.classList.toggle("show");
+  if (botao.classList.contains("show")) {
+    botao.title = "Mostrar Efeitos do Poder";
+  } else {
+    botao.title = "Ocultar Efeitos do Poder";
+  }
 
   const elementos = poderEl.querySelectorAll(
     ".efeitos-modificadores, .descricao-poder"

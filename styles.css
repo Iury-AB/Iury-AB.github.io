@@ -875,7 +875,7 @@ span {
   align-items: center;
   display: grid;
   column-gap: 20px;
-  grid-template-columns: 5% 10% 10% 51% 5%;
+  grid-template-columns: 5% 1% 8% 8% 50% 5%;
 }
 
 .modificadores-linha {
@@ -911,4 +911,14 @@ span {
   border:none;
   letter-spacing: var(--nf-spacing);
   background-color: transparent;
+}
+
+input::placeholder {
+  opacity: 1;
+  color: #181818;
+}
+
+textarea::placeholder {
+  opacity: 1;
+  color: #181818;
 }
