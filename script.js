@@ -60,7 +60,7 @@ function removerVantagens() {
   recalcularTudo();
 }
 
-const contadorModificadores = [];
+let contadorModificadores = [];
 
 function adicionarModificadores(poder, efeito) {
 
@@ -89,7 +89,7 @@ function adicionarModificadores(poder, efeito) {
       <option value="fixo-por-nivel">Fixo por Nível</option>
       <option value="fixo">Fixo</option>
     </select>
-    <input type="text" id="nome-modificador-${poder}-${efeito}-${contadorModificadores[poder][efeito]}" name="nome-modificador">
+    <input type="text" id="nome-modificador-${poder}-${efeito}-${contadorModificadores[poder][efeito]}" name="nome-modificador" placeholder="Modificador ${contadorModificadores[poder][efeito]} do efeito ${efeito}">
   `;
 
   listaModificadores.appendChild(novaLinha);
@@ -112,7 +112,7 @@ function adicionarEfeito(poder) {
     </button>
     <input type="number" name="lvl-efeito" id="lvl-efeito-${poder}-${contadorEfeitos[poder]}">
     <input type="number" name="custo-efeito" id="custo-efeito-${poder}-${contadorEfeitos[poder]}">
-    <input type="text" name="nome-efeito" id="nome-efeito-${poder}-${contadorEfeitos[poder]}">
+    <input type="text" name="nome-efeito" id="nome-efeito-${poder}-${contadorEfeitos[poder]}" placeholder="Efeito ${contadorEfeitos[poder]}">
   `;
 
   listaEfeitos.appendChild(novoEfeito);
@@ -158,29 +158,37 @@ function removerEfeitos(poder) {
     const nome = linhaEfeito.querySelector('input[name="nome-efeito"]');
 
     if (lvl) {
-      lvl.id = `lvl-efeito-1-${indexEfeito}`;
+      lvl.id = `lvl-efeito-${poder}-${indexEfeito}`;
     }
 
     if (custo) {
-      custo.id = `custo-efeito-1-${indexEfeito}`;
+      custo.id = `custo-efeito-${poder}-${indexEfeito}`;
     }
 
     if (nome) {
-      nome.id = `nome-efeito-1-${indexEfeito}`;
+      nome.id = `nome-efeito-${poder}-${indexEfeito}`;
+      nome.placeholder = `Efeito ${indexEfeito}`;
     }
 
     const linhasModif = linhaEfeito.querySelectorAll(".modificadores-linha");
 
     linhasModif.forEach((linhaModificador, indexModificador) => {
 
-      const custoM = linhaModificador.querySelector('input[name="nome-modificador"]');
-      const tipoM = linhaModificador.querySelector('input[name="tipo-modificador"]');
+      const custoM = linhaModificador.querySelector('input[name="custo-modificador"]');
+      const tipoM = linhaModificador.querySelector('select[name="tipo-modificador"]');
       const nomeM = linhaModificador.querySelector('input[name="nome-modificador"]');
 
       if(custoM) {
-        custoM.id = `custo-modificador-1-${indexEfeito}-${indexModificador}`;
-        tipoM.id = `tipo-modificador-1-${indexEfeito}-${indexModificador}`;
-        nomeM.id = `nome-modificador-1-${indexEfeito}-${indexModificador}`;
+        custoM.id = `custo-modificador-${poder}-${indexEfeito}-${indexModificador}`;
+      }
+
+      if (tipoM) {
+        tipoM.id = `tipo-modificador-${poder}-${indexEfeito}-${indexModificador}`;
+      }
+
+      if (nomeM) {
+        nomeM.id = `nome-modificador-${poder}-${indexEfeito}-${indexModificador}`;
+        nomeM.placeholder = `Modificador ${indexModificador} do efeito ${indexEfeito}`;
       }
     });
   });
@@ -201,10 +209,13 @@ function adicionarPoder() {
 
   novoPoder.innerHTML = `
     <div class="span-2" style="display: flex;">
-      <button title="Mostrar Efeitos" class="botao-img" onclick="ocultarDetalhesPoder(${contadorPoderes})">
+      <button title="Mostrar Efeitos" class="botao-img toggle-show mostrar-poder" onclick="ocultarDetalhesPoder(${contadorPoderes})" id="mostrar-poder-${contadorPoderes}">
         <img src="img/mais.png" alt="Mostrar Efeitos">
       </button>
-      <input type="text" id="nome-poder-${contadorPoderes}">
+      <input type="text" id="nome-poder-${contadorPoderes}" placeholder="Nome do Poder ${contadorPoderes}" class="nome-poder">
+      <button class="botao-img apagar-poder" title="Apagar Poder ${contadorPoderes}" onclick="removerPoder(${contadorPoderes})" id="apagar-poder-${contadorPoderes}">
+        <img src="img/delete.png" alt="Apagar Poder">
+      </button>
     </div>
     
     <div class="efeitos-modificadores">
@@ -215,30 +226,129 @@ function adicionarPoder() {
         <label for="">Efeito</label>
       </div>
 
-      <div id="lista-efeitos-${contadorPoderes}" style="max-height: 200px; overflow-y: auto;">
+      <div id="lista-efeitos-${contadorPoderes}" style="max-height: 200px; overflow-y: auto;" class="lista-efeitos">
       </div>
 
       <div style="justify-self: center; display: flex;">
-        <button class="botao-img" title="Adicionar Efeito ao Poder ${contadorPoderes}" onclick="adicionarEfeito(${contadorPoderes})" style="width: 50%;">
+        <button class="botao-img adicionar-efeito" title="Adicionar Efeito ao Poder ${contadorPoderes}" onclick="adicionarEfeito(${contadorPoderes})" style="width: 50%;" id="adicionar-efeito-${contadorPoderes}">
           <img src="img/adicionar.png" alt="Adicionar Efeito">
         </button>
 
-        <button class="botao-img" title="Remover Efeitos e Modificadores Vazios do Poder ${contadorPoderes}" onclick="removerEfeitos(${contadorPoderes})" style="width: 50%;">
+        <button class="botao-img remover-efeito" title="Remover Efeitos e Modificadores Vazios do Poder ${contadorPoderes}" onclick="removerEfeitos(${contadorPoderes})" style="width: 50%;" id="remover-efeito-${contadorPoderes}">
           <img src="img/remover.png" alt="Remover Efeitos Vazios">
         </button>
       </div>
     </div>
 
     <div class="descricao-poder">
-      <label for="descricao-poder-${contadorPoderes}">
+      <label for="">
         Descrição
       </label>
-      <textarea name="descricao-poder" id="descricao-poder-${contadorPoderes}"></textarea>
+      <textarea name="descricao-poder" id="descricao-poder-${contadorPoderes}" placeholder="Descrição do poder ${contadorPoderes}"></textarea>
     </div>
   `;
 
   listaPoderes.appendChild(novoPoder);
   trocaTema();
+}
+
+function removerPoder (poder) {
+  const poderRemover = document.getElementById(`poder-${poder}`);
+  if(poderRemover) {
+    poderRemover.remove();
+    contadorModificadores.splice(poder,1);
+    contadorEfeitos.splice(poder,1);
+    contadorPoderes--;
+  }
+
+  const poderes = document.querySelectorAll(".poder-linha");
+  
+  poderes.forEach((linhaPoder, indexPoder) => {
+    const mostrarPoder = linhaPoder.querySelector(".mostrar-poder");
+    const nomePoder = linhaPoder.querySelector(".nome-poder");
+    const apagarPoder = linhaPoder.querySelector(".apagar-poder");
+    const listaEfeitos = linhaPoder.querySelector(".lista-efeitos");
+    const addEfeito = linhaPoder.querySelector(".adicionar-efeito");
+    const remEfeito = linhaPoder.querySelector(".remover-efeito");
+    const descricaoPoder = linhaPoder.querySelector("textarea[name='descricao-poder']");
+
+    linhaPoder.id = `poder-${indexPoder+1}`;
+    
+    if (mostrarPoder) {
+      mostrarPoder.id = `mostrar-poder-${indexPoder+1}`;
+      mostrarPoder.onclick = () => ocultarDetalhesPoder(indexPoder+1);
+    }
+    if (nomePoder) {
+      nomePoder.id = `nome-poder-${indexPoder+1}`;
+      nomePoder.placeholder = `Nome do Poder ${indexPoder+1}`;
+    }
+    if (apagarPoder) {
+      apagarPoder.id = `apagar-poder-${indexPoder+1}`;
+      apagarPoder.onclick = () => removerPoder(indexPoder+1);
+      apagarPoder.title = `Apagar Poder ${indexPoder+1}`;
+    }
+    if (listaEfeitos) {
+      listaEfeitos.id = `lista-efeitos-${indexPoder+1}`;
+    }
+    if (addEfeito) {
+      addEfeito.id = `adicionar-efeito-${indexPoder+1}`;
+      addEfeito.title = `Adicionar Efeito ao Poder ${indexPoder+1}`;
+      addEfeito.onclick = () => adicionarEfeito(indexPoder+1);
+    }
+    if (remEfeito) {
+      remEfeito.id = `remover-efeito-${indexPoder+1}`;
+      remEfeito.title = `Remover Efeitos e Modificadores Vazios do Poder ${indexPoder+1}`;
+      remEfeito.onclick = () => removerEfeitos(indexPoder+1);
+    }
+    if (descricaoPoder) {
+      descricaoPoder.id = `descricao-poder-${indexPoder+1}`;
+      descricaoPoder.placeholder = `Descrição do poder ${indexPoder+1}`
+    }
+
+    const linhasEf = linhaPoder.querySelectorAll(".efeitos-linha");
+
+    linhasEf.forEach((linhaEfeito, indexEfeito) => {
+
+      const lvl = linhaEfeito.querySelector('input[name="lvl-efeito"]');
+      const custo = linhaEfeito.querySelector('input[name="custo-efeito"]');
+      const nome = linhaEfeito.querySelector('input[name="nome-efeito"]');
+
+      if (lvl) {
+        lvl.id = `lvl-efeito-${indexPoder+1}-${indexEfeito}`;
+      }
+
+      if (custo) {
+        custo.id = `custo-efeito-${indexPoder+1}-${indexEfeito}`;
+      }
+
+      if (nome) {
+        nome.id = `nome-efeito-${indexPoder+1}-${indexEfeito}`;
+        nome.placeholder = `Efeito ${indexEfeito}`;
+      }
+
+      const linhasModif = linhaEfeito.querySelectorAll(".modificadores-linha");
+
+      linhasModif.forEach((linhaModificador, indexModificador) => {
+
+        const custoM = linhaModificador.querySelector('input[name="custo-modificador"]');
+        const tipoM = linhaModificador.querySelector('select[name="tipo-modificador"]');
+        const nomeM = linhaModificador.querySelector('input[name="nome-modificador"]');
+
+        if(custoM) {
+          custoM.id = `custo-modificador-${indexPoder+1}-${indexEfeito}-${indexModificador}`;
+        }
+
+        if (tipoM) {
+          tipoM.id = `tipo-modificador-${indexPoder+1}-${indexEfeito}-${indexModificador}`;
+        }
+
+        if (nomeM) {
+          nomeM.id = `nome-modificador-${indexPoder+1}-${indexEfeito}-${indexModificador}`;
+          nomeM.placeholder = `Modificador ${indexModificador} do efeito ${indexEfeito}`;
+        }
+      });
+    });
+  });
 }
 
 function exportarFicha() {
@@ -253,7 +363,10 @@ function exportarFicha() {
 
   const ficha = {
     dados,
-    contadorVantagens
+    contadorVantagens,
+    contadorPoderes,
+    contadorEfeitos,
+    contadorModificadores
   };
 
   const blob = new Blob(
@@ -278,27 +391,26 @@ function importarFicha(event) {
     const json = JSON.parse(reader.result);
     const dados = json.dados;
     const nVantagens = json.contadorVantagens || 0;
+    const nPoderes = json.contadorPoderes || 0;
+    const nEfeitos = json.contadorEfeitos;
+    const nModiifcadores = json.contadorModificadores;
 
-    const listaVantagens = document.getElementById("lista-vantagens");
-    listaVantagens.innerHTML = "";
-    contadorVantagens = 0;
+    const nome = dados["personagem"];
 
-    for (let i = 0; i < nVantagens; i++) {
-      adicionarVantagem();
+    localStorage.setItem(`ficha:${nome}`, JSON.stringify(dados));
+    localStorage.setItem(`contadorVantagens:${nome}`, nVantagens);
+    localStorage.setItem(`contadorModificadores:${nome}`, JSON.stringify(nModiifcadores));
+    localStorage.setItem(`contadorEfeitos:${nome}`, JSON.stringify(nEfeitos));
+    localStorage.setItem(`contadorPoderes:${nome}`, nPoderes);
+
+    carregarFicha(nome);
+    const index = getIndex();
+    if (!index.includes(nome)) {
+      index.push(nome);
+      saveIndex(index);
     }
-
-    Object.keys(dados).forEach(id => {
-      const el = document.getElementById(id);
-      if (el) el.value = dados[id];
-    });
-
-    // recalcula campos automáticos
-    if (typeof recalcularTudo === "function") {
-      recalcularTudo();
-    }
-
-    const nome = document.getElementById("personagem").value;
-    document.getElementById("pagina").innerHTML = nome;
+    carregarIndex();
+    document.getElementById("listaFichas").value = nome;
   };
   
   reader.readAsText(file);
@@ -358,7 +470,8 @@ function salvarFicha() {
   localStorage.setItem(`ficha:${nome}`, JSON.stringify(dados));
   localStorage.setItem(`contadorVantagens:${nome}`, contadorVantagens);
   localStorage.setItem(`contadorModificadores:${nome}`, JSON.stringify(contadorModificadores));
-  localStorage.setItem(`contadorEfeitos:${nome}`, contadorEfeitos);
+  localStorage.setItem(`contadorEfeitos:${nome}`, JSON.stringify(contadorEfeitos));
+  localStorage.setItem(`contadorPoderes:${nome}`, contadorPoderes);
 
   document.getElementById("pagina").innerHTML = nome;
 }
@@ -380,6 +493,27 @@ function carregarFicha(nome) {
 
   for (let index = 0; index < nVantagens; index++) {
     adicionarVantagem();
+  }
+
+  const nPoderes = JSON.parse(localStorage.getItem(`contadorPoderes:${nome}`));
+  const nEfeitos = JSON.parse(localStorage.getItem(`contadorEfeitos:${nome}`));
+  const nModiifcadores = JSON.parse(localStorage.getItem(`contadorModificadores:${nome}`));
+
+  const listaPoderes = document.getElementById("lista-poderes");
+  listaPoderes.innerHTML = "";
+
+  contadorPoderes = 0;
+  contadorEfeitos = [];
+  contadorModificadores = [];
+
+  for (let i = 0; i < nPoderes; i++) {
+    adicionarPoder();
+    for (let j = 0; j < nEfeitos[i+1]; j++) {
+      adicionarEfeito(i+1);
+      for (let k = 0; k < nModiifcadores[i+1][j+1]; k++) {
+        adicionarModificadores(i+1, j+1);
+      }
+    }
   }
 
   Object.keys(dados).forEach(id => {
@@ -429,6 +563,12 @@ function limparFicha() {
   contadorVantagens = 0;
   const listaVantagens = document.getElementById("lista-vantagens");
   listaVantagens.innerHTML = "";
+
+  contadorModificadores = [];
+  contadorEfeitos = [];
+  contadorPoderes = 0;
+  const listaPoderes = document.getElementById("lista-poderes");
+  listaPoderes.innerHTML = "";
 
   // limpa seleção de ficha
   const lista = document.getElementById("listaFichas");
@@ -1084,6 +1224,9 @@ function mudarArquetipo(arquetipo) {
 function ocultarDetalhesPoder(poderId) {
   const poderEl = document.getElementById(`poder-${poderId}`);
   if (!poderEl) return;
+
+  const botao = document.getElementById(`mostrar-poder-${poderId}`);
+  botao.classList.toggle("show");
 
   const elementos = poderEl.querySelectorAll(
     ".efeitos-modificadores, .descricao-poder"
