@@ -63,7 +63,7 @@
         </a>
       </h1>
       <h1>
-        <a href="">
+        <a href="#ficha-inventario">
           Equipamento & Inventário
         </a>
       </h1>
@@ -1298,13 +1298,30 @@
       <div id="cabecalho-poderes">
         <h1>Poderes & Dispositivos</h1>
 
-        <div id="arquetipo">
+        <div id="arquetipo" class="arquetipo">
           <label for="arquetipo">Arquétipo de Poder:</label>
           <div style="border: 2px solid var(--cor-secundaria);">
             <img src="img/elemental_sem_fundo.png" alt="Arquétipo" id="arquetipo-simbolo">
           </div>
 
-          <select name="arquetipo" id="arquetipo-selecao" onchange="mudarArquetipo(this.value);">
+          <select name="arquetipo" id="arquetipo-selecao" onchange="mudarArquetipo(this.value, 'arquetipo');">
+            <option value="elemental" selected>Elemental</option>
+            <option value="criacao">Criação</option>
+            <option value="espacial">Espacial</option>
+            <option value="corporeo">Corpóreo</option>
+            <option value="destruicao">Destruição</option>
+            <option value="nulo">Nulo</option>
+            <option value="inversao">Inversão</option>
+          </select>
+        </div>
+
+        <div id="despertar" style="display: none;" class="arquetipo">
+          <label for="despertar">Despertar:</label>
+          <div style="border: 2px solid var(--cor-secundaria);">
+            <img src="img/elemental_sem_fundo.png" alt="Arquétipo" id="despertar-simbolo">
+          </div>
+
+          <select name="despertar" id="despertar-selecao" onchange="mudarArquetipo(this.value, 'despertar');">
             <option value="elemental" selected>Elemental</option>
             <option value="criacao">Criação</option>
             <option value="espacial">Espacial</option>
@@ -1325,6 +1342,43 @@
       </button>
     </div>
     
+  </div>
+
+  <div class="sheet" id="ficha-inventario">
+    <div class="bloco equipamento">
+      <div style="display: flex; gap: 10px;">
+        <h1>Equipamento</h1>
+
+        <div class="stat" style="width: 10%;margin-left: auto;">
+          <label for="nivel-equipamento">Nível:</label>
+          <input type="number" id="nivel-equipamento" style="font-size: 15px;">
+        </div>
+
+        <div class="sub-hab" style="width: 10%;">
+          <label for="pontos-equipamento">Total:</label>
+          <input type="number" id="pontos-equipamento" readonly>
+        </div>
+
+        <div class="sub-hab" style="width: 10%;">
+          <label for="resta-equipamento">Resta:</label>
+          <input type="number" id="resta-equipamento" readonly>
+        </div>
+      </div>
+
+      <div class="linha-equipamento">
+        <span>Custo</span>
+        <span>Equipamento</span>
+      </div>
+
+      <div class="linha-equipamento">
+        <input type="number" id="custo-equipamento-1">
+        <input type="text" id="equipamento-1">
+      </div>
+    </div>
+
+    <div class="bloco inventario">
+      <h1>Inventário</h1>
+    </div>
   </div>
 
   <div class="barra-lateral">

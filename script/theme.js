@@ -65,7 +65,7 @@ function trocaTema () {
   }
   else if(selecionado.value == "claro") {
     root.style.setProperty('--cor-tema-menu', '#ffffffff');
-    root.style.setProperty('--cor-tema-menu-extra', '#f7f7f7ff');
+    root.style.setProperty('--cor-tema-menu-extra', '#ebebebff');
     root.style.setProperty('--cor-tema-fundo', '#f0f0f0ff');
     root.style.setProperty('--cor-tema-letras', '#181818');
     root.style.setProperty('--cor-borda', 'rgba(179, 179, 179, 1)');

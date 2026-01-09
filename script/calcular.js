@@ -118,6 +118,7 @@ function recalcularTudo() {
   const corrupcao = document.getElementById("corrupcao");
   const max = document.getElementById("corrupcao-maximo");
 
+  despertar();
   atualizarBarra(corrupcao, max);
   calcularBonusClasse();
   calcularVida();
@@ -129,6 +130,16 @@ function recalcularTudo() {
   calcularCustoPericias();
   calcularCustoPoderes();
   calcularTotalPontos();
+}
+
+function despertar () {
+  const corrupcao = Number(document.getElementById("corrupcao").value) || 0;
+  const despertarArquetipo = document.getElementById("despertar");
+  if (corrupcao >= 50) {
+    despertarArquetipo.style.display = "flex";
+  } else {
+    despertarArquetipo.style.display = "none";
+  }
 }
 
 document.addEventListener("input", function (e) {

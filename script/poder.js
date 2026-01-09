@@ -301,8 +301,8 @@ function removerPoder (poder) {
   });
 }
 
-function mudarArquetipo(arquetipo) {
-  const imagemArquetipo = document.getElementById("arquetipo-simbolo");
+function mudarArquetipo(arquetipo, campo) {
+  const imagemArquetipo = document.getElementById(`${campo}-simbolo`);
 
   if (arquetipo == "elemental") {
     imagemArquetipo.src = "img/elemental_sem_fundo.png";
