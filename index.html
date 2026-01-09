@@ -540,7 +540,7 @@
           </div>
 
           <div style="justify-self: center;">
-              <button onclick="adicionarVantagem();" class="botao-img" id="addVantagem" title="Adicionar Vantagem">
+            <button onclick="adicionarVantagem();" class="botao-img" id="addVantagem" title="Adicionar Vantagem">
               <img src="img/adicionar.png" alt="Adicionar Vantagem">
             </button>
 
@@ -1345,7 +1345,7 @@
   </div>
 
   <div class="sheet" id="ficha-inventario">
-    <div class="bloco equipamento">
+    <div class="bloco equipamentos">
       <div style="display: flex; gap: 10px;">
         <h1>Equipamento</h1>
 
@@ -1370,9 +1370,17 @@
         <span>Equipamento</span>
       </div>
 
-      <div class="linha-equipamento">
-        <input type="number" id="custo-equipamento-1">
-        <input type="text" id="equipamento-1">
+      
+      <div id="lista-equipamento"></div>
+
+      <div style="display: flex;justify-self: center;">
+        <button title="Adiconar Equipamento" onclick="adicionarEquipamento();" class="botao-img">
+          <img src="img/adicionar.png" alt="Adicionar Equipamento">
+        </button>
+
+        <button title="Remover Equipamentos Vazios" onclick="removerEquipamento()" class="botao-img">
+          <img src="img/remover.png" alt="Remover Equipamento">
+        </button>
       </div>
     </div>
 
@@ -1527,6 +1535,7 @@
   <script src="script/utils.js"></script>
   <script src="script/atributos.js"></script>
   <script src="script/poder_vantagens.js"></script>
+  <script src="script/equipamento.js"></script>
   <script src="script/controlador.js"></script>
   <script src="script/ui.js"></script>
   <script src="script/testes_discord.js"></script>

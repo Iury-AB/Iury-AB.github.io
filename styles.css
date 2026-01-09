@@ -333,11 +333,11 @@ label {
   padding: 5px;
 }
 
-.equipamento {
+.equipamentos {
   padding: 10px;
 }
 
-.equipamento:hover {
+.equipamentos:hover {
   background-color: var(--cor-tema-menu-extra);
 }
 

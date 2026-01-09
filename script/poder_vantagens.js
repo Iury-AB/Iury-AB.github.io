@@ -379,7 +379,7 @@ function adicionarVantagem() {
   const novaLinha = document.createElement("div");
   novaLinha.className = "vantagens-linha";
   novaLinha.innerHTML = `
-    <input type="number" id="vantagem${contadorVantagens}-lvl" title="Nível da Vantagem" class="dependente vantagem">
+    <input type="number" id="vantagem${contadorVantagens}-lvl" title="Nível da Vantagem" class="dependente vantagem" placeholder="NVL">
     <select name="tipo" id="vantagem${contadorVantagens}-tipo" class="dependente tipo-vantagem">
       <option value="nenhum"> — Tipo — </option>
       <option value="classe">Classe</option>
@@ -388,7 +388,7 @@ function adicionarVantagem() {
       <option value="pericia">Pericia</option>
       <option value="sorte">Sorte</option>
     </select>
-    <input type="text" id="vantagem${contadorVantagens}-nome" title="Vantagem ${contadorVantagens}" class="nome-vantagem">
+    <input type="text" id="vantagem${contadorVantagens}-nome" title="Vantagem ${contadorVantagens}" class="nome-vantagem" placeholder="Vantagem ${contadorVantagens}">
     <button class="botao-img" onclick="mostrarVantagem(${contadorVantagens})" title = "Ocultar Descrição da Vantagem ${contadorVantagens}" id="mostrar-vantagem-${contadorVantagens}">
       <img src="img/mais.png" alt="Mostrar Descrição da Vantagem" class="vantagens-toggle toggle-show">
     </button>
@@ -430,6 +430,7 @@ function removerVantagens() {
     if (nome) {
       nome.id = `vantagem${numero}-nome`;
       nome.title = `Vantagem ${numero}`;
+      nome.placeholder = `Vantagem ${numero}`
     }
   });
 

@@ -59,6 +59,7 @@ function salvarFicha() {
   localStorage.setItem(`contadorModificadores:${nome}`, JSON.stringify(contadorModificadores));
   localStorage.setItem(`contadorEfeitos:${nome}`, JSON.stringify(contadorEfeitos));
   localStorage.setItem(`contadorPoderes:${nome}`, contadorPoderes);
+  localStorage.setItem(`contadorEquipamento:${nome}`, contadorEquipamento);
 
   document.getElementById("pagina").innerHTML = nome;
 }
@@ -103,6 +104,17 @@ function carregarFicha(nome) {
     }
   }
 
+  const nEquipamentos = JSON.parse(localStorage.getItem(`contadorEquipamento:${nome}`));
+
+  const listaEquipamento = document.getElementById("lista-equipamento");
+  listaEquipamento.innerHTML = "";
+
+  contadorEquipamento = 0;
+
+  for (let index = 0; index < nEquipamentos; index++) {
+    adicionarEquipamento();
+  }
+
   Object.keys(dados).forEach(id => {
     const el = document.getElementById(id);
     if (el) el.value = dados[id];
@@ -120,6 +132,10 @@ function deletarFicha() {
 
   localStorage.removeItem(`ficha:${nome}`);
   localStorage.removeItem(`contadorVantagens:${nome}`);
+  localStorage.removeItem(`contadorEquipamento:${nome}`);
+  localStorage.removeItem(`contadorModificadores:${nome}`);
+  localStorage.removeItem(`contadorEfeitos:${nome}`);
+  localStorage.removeItem(`contadorPoderes:${nome}`);
 
   const index = getIndex().filter(n => n !== nome);
   saveIndex(index);
@@ -158,6 +174,10 @@ function limparFicha() {
   const listaPoderes = document.getElementById("lista-poderes");
   listaPoderes.innerHTML = "";
 
+  contadorEquipamento = 0;
+  const listaEquipamento = document.getElementById("lista-equipamento");
+  listaEquipamento.innerHTML = "";
+
   // limpa seleção de ficha
   const lista = document.getElementById("listaFichas");
   if (lista) lista.value = "selecionar";
@@ -186,7 +206,8 @@ function exportarFicha() {
     contadorVantagens,
     contadorPoderes,
     contadorEfeitos,
-    contadorModificadores
+    contadorModificadores,
+    contadorEquipamento
   };
 
   const blob = new Blob(
@@ -215,6 +236,7 @@ function importarFicha(event) {
     const nPoderes = json.contadorPoderes || 0;
     const nEfeitos = json.contadorEfeitos;
     const nModiifcadores = json.contadorModificadores;
+    const nEquipamentos = json.contadorEquipamento;
 
     const nome = dados["personagem"];
 
@@ -223,6 +245,7 @@ function importarFicha(event) {
     localStorage.setItem(`contadorModificadores:${nome}`, JSON.stringify(nModiifcadores));
     localStorage.setItem(`contadorEfeitos:${nome}`, JSON.stringify(nEfeitos));
     localStorage.setItem(`contadorPoderes:${nome}`, nPoderes);
+    localStorage.setItem(`contadorEquipamento:${nome}`, nEquipamentos);
 
     carregarFicha(nome);
     const index = getIndex();
