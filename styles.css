@@ -91,6 +91,8 @@ body {
   border: none;
   display: flex;
   padding: 5px;
+  transition:
+    background-color 0.5s ease;
 }
 
 .opcao-ajuste:hover {
@@ -198,6 +200,15 @@ label {
   color: var(--cor-tema-letras);
 }
 
+textarea {
+  background-color: var(--cor-campo);
+  border-radius: 5px;
+  border: none;
+  padding: 5px;
+  color: var(--cor-tema-letras);
+  font-family: comic;
+}
+
 .bloco {
   display: grid;
   border: 2px solid var(--cor-secundaria);
@@ -209,6 +220,8 @@ label {
   grid-template-columns: repeat(4, 1fr);
   gap: 12px;
   padding: 10px;
+  transition:
+    background-color 0.5s ease;
 }
 
 .header-grid:hover {
@@ -229,6 +242,8 @@ label {
   padding: 10px;
   align-items: center;
   justify-items: center;
+  transition:
+    background-color 0.5s ease;
 }
 
 .habilities:hover {
@@ -244,6 +259,8 @@ label {
   gap: 2px;
   padding: 10px;
   align-items: center;
+  transition:
+    background-color 0.5s ease;
 }
 
 .defenses:hover {
@@ -256,6 +273,8 @@ label {
   padding: 10px;
   font-size: 20px;
   align-items: center;
+  transition:
+    background-color 0.5s ease;
 }
 
 .classe:hover{
@@ -267,6 +286,8 @@ label {
   align-items: center;
   padding: 10px;
   justify-items: center;
+  transition:
+    background-color 0.5s ease;
 }
 
 .skills:hover {
@@ -278,6 +299,8 @@ label {
   align-items: center;
   font-size: 15px;
   padding: 10px;
+  transition:
+    background-color 0.5s ease;
 }
 
 .vantagens:hover {
@@ -334,7 +357,12 @@ label {
 }
 
 .equipamentos {
+  display: flex;
+  flex-direction: column;
   padding: 10px;
+  align-items: top;
+  transition:
+    background-color 0.5s ease;
 }
 
 .equipamentos:hover {
@@ -342,7 +370,12 @@ label {
 }
 
 .inventario {
+  display: flex;
+  flex-direction: column;
+  align-items: top;
   padding: 10px;
+  transition:
+    background-color 0.5s ease;
 }
 
 .inventario:hover {
@@ -540,6 +573,8 @@ input[type="number"]::-webkit-outer-spin-button {
   font-size: 20px;
   padding-left: 10px;
   padding-right: 10px;
+  transition:
+    background-color 0.5s ease;
 }
 
 #barra-navegacao h1:hover {
@@ -616,6 +651,8 @@ input[type="number"]::-webkit-outer-spin-button {
   vertical-align: middle;
   cursor: pointer;
   font-family: BebasNeue;
+  transition:
+    background-color 0.5s ease;
 }
 
 .botao:hover {
@@ -630,6 +667,8 @@ input[type="number"]::-webkit-outer-spin-button {
   width: 35px;
   height: 35px;
   border-radius: 5px;
+  transition:
+    background-color 0.5s ease;
 }
 
 .botao-img:hover {
@@ -654,6 +693,8 @@ input[type="number"]::-webkit-outer-spin-button {
   width: 18px;
   height: 18px;
   border-radius: 50%;
+  transition:
+    background-color 0.5s ease;
 }
 
 .botao-rolar img {
@@ -986,4 +1027,9 @@ textarea::placeholder {
   background-color: var(--cor-campo);
   border: none;
   border-radius: 5px;
+}
+
+#lista-equipamento {
+  max-height: 200px;
+  overflow-y: auto;
 }
