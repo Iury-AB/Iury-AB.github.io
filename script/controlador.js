@@ -136,8 +136,9 @@ function calcularTotalPontos () {
   const pontosVan = Number(document.getElementById("total-pontos-vantagens").value);
   const pontosPer = Number(document.getElementById("total-pontos-pericias").value);
   const pontosDef = Number(document.getElementById("total-pontos-defesas").value);
+  const pondosPod = Number(document.getElementById("total-pontos-poderes").value);
 
-  custoPontos = pontosHab + pontosVan + pontosDef + pontosPer;
+  custoPontos = pontosHab + pontosVan + pontosDef + pontosPer + pondosPod;
 
   const totalPersonagem = document.getElementById("total-personagem");
   totalPersonagem.value = custoPontos;

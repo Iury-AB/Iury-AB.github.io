@@ -45,6 +45,13 @@ body {
   border: 1px solid var(--cor-borda);
 }
 
+#ficha-principal, 
+#ficha-poderes, 
+#ficha-inventario, 
+#ficha-combate {
+  scroll-margin-top: 70px;
+}
+
 .barra-lateral {
   display: flex;
   flex-direction: column;
@@ -309,7 +316,7 @@ textarea {
 
 .vantagens-linha {
   display: grid;
-  grid-template-columns: 10% 15% 65% 5%;
+  grid-template-columns: 10% 15% 63% 5%;
   gap: 5px;
   margin: 5px;
 }
@@ -319,6 +326,7 @@ textarea {
   border: none;
   border-radius: 5px;
   font-family: comic;
+  width: 90%;
   color: var(--cor-tema-letras);
   padding: 5px;
   max-height: 500px;
@@ -379,6 +387,18 @@ textarea {
 }
 
 .inventario:hover {
+  background-color: var(--cor-tema-menu-extra);
+}
+
+.combate {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  padding: 10px;
+  transition: 
+    background-color 0.5s ease;
+}
+
+.combate:hover {
   background-color: var(--cor-tema-menu-extra);
 }
 
@@ -809,7 +829,7 @@ span {
   margin-top: 20px;
 }
 
-#corrupcao-margem {
+.margem-barra {
   position: absolute;
   height: 10px;
   margin-top: 18px; 
@@ -1032,4 +1052,53 @@ textarea::placeholder {
 #lista-equipamento {
   max-height: 200px;
   overflow-y: auto;
+}
+
+
+#personagem-combate {
+  border: 5px solid var(--cor-secundaria);
+  display: grid;
+  grid-template-columns: 25% 75%;
+}
+
+#personagem-combate img {
+  max-width: 120px;
+  max-height: 120px;
+  filter: invert(0%);
+}
+
+.margem-combate {
+  width: 45%;
+}
+
+#status-combate {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  position: relative; 
+  width: 100%;
+  padding: 5px;
+  gap: 5px;
+}
+
+.input-combate {
+  font-size: 25px;
+  background-color: var(--cor-campo);
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.maximo-combate {
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 25px;
+  text-align:center;
+  border: 2px solid var(--cor-sub);
+  background-color: transparent;
+}
+
+#vida-estamina-combate {
+  display: grid; 
+  grid-template-columns: 50% 50%; 
+  gap: 5px;
 }

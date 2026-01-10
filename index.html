@@ -68,7 +68,7 @@
         </a>
       </h1>
       <h1>
-        <a href="">
+        <a href="#ficha-combate">
           Combate
         </a>
       </h1>
@@ -456,7 +456,7 @@
             </div>
 
             <div class="span-6" style="position: relative;">
-              <hr align="left" id="corrupcao-margem">
+              <hr align="left" class="margem-barra">
               <hr id="corrupcao-progresso" align="left" style="position: relative; z-index: 2;margin-left: 2px;">
               <script>
                 const barra = document.getElementById("corrupcao-progresso");
@@ -1390,7 +1390,32 @@
   </div>
 
   <div class="sheet" id="ficha-combate">
-    
+    <div class="bloco combate">
+      <h1>Combate</h1>
+      <br>
+      <div id="personagem-combate">
+
+        <img src="img/Verdant_semOculos.png" alt="Icone Peronsagem">
+
+        <div id="status-combate">
+
+          <div id="vida-estamina-combate">
+            <input type="number" id="vida-atual-combate" placeholder="Vida" class="input-combate">
+            <input type="number" id="vida-maxima-combate" class="maximo-combate" readonly>
+            <input type="number" id="estamina-atual-combate" placeholder="Est." class="input-combate">
+            <input type="number" id="estamina-maxima-combate" class="maximo-combate" readonly>
+          </div>
+
+          <div style="display: flex;">
+            <hr align="left" class="margem-barra margem-combate" style="margin-top: 14%;">
+            <hr align="left" class="margem-barra margem-combate" style="margin-top: 29%; border: 2px solid black;">
+          </div>
+
+          
+
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="barra-lateral">
