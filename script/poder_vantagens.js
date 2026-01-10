@@ -163,6 +163,8 @@ function removerPoder (poder) {
       });
     });
   });
+
+  recalcularTudo();
 }
 
 
@@ -289,6 +291,7 @@ function removerEfeitos(poder) {
       }
     });
   });
+  recalcularTudo();
 }
 
 function adicionarModificadores(poder, efeito) {
